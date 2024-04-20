@@ -2,10 +2,11 @@ import sys
 import pyodbc
 from PyQt5 import QtWidgets
 from DB_functions import *
-from ui import Ui_MainWindow as Ui_MainWindow2
+#from ui import Ui_MainWindow as Ui_MainWindow2
 from ui1 import Ui_MainWindow as Ui_MainWindow1
 from ui2 import Ui_MainWindow as Ui_MainWindow3
 from ui3 import Ui_MainWindow as Ui_MainWindow
+from final_interface import Ui_MainWindow as Ui_MainWindow2
 from datetime import datetime
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -16,38 +17,38 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setFixedSize(self.size())
         self.current_page_index = 0
         self.ui.stackedWidget.setCurrentIndex(self.current_page_index)
-        self.ui.pushButton.clicked.connect(self.previous_page)
-        self.ui.pushButton_2.clicked.connect(self.next_page)
-        self.ui.pushButton_6.clicked.connect(self.add_row)
-        self.ui.pushButton_5.clicked.connect(self.delete_row)
-        self.ui.pushButton_8.clicked.connect(self.open_os_window)
-        self.ui.pushButton_7.clicked.connect(self.delete_os)
-        self.ui.pushButton_18.clicked.connect(self.add_data)
-        self.ui.tableWidget_2.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.ui.back.clicked.connect(self.previous_page)
+        self.ui.forward.clicked.connect(self.next_page)
+        self.ui.add_tech.clicked.connect(self.add_row)
+        self.ui.delete_tech.clicked.connect(self.delete_row)
+        self.ui.add_os.clicked.connect(self.open_os_window)
+        self.ui.delete_os.clicked.connect(self.delete_os)
+        self.ui.post_new_emp.clicked.connect(self.add_data)
+        self.ui.table_os.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.update_button_positions()
 
     def add_data(self):
-        kab = int(self.ui.lineEdit_7.text())
-        street = self.ui.lineEdit_5.text()
-        home  = self.ui.lineEdit_6.text()
-        surname = self.ui.lineEdit_8.text()
-        name = self.ui.lineEdit_9.text()
-        patronymic = self.ui.lineEdit_28.text()
-        birthday = self.ui.lineEdit_29.text()
-        gender = "M" if self.ui.radioButton.setChecked(True) else "Ж"
-        post = self.ui.lineEdit_33.text()
-        rank = self.ui.lineEdit_32.text()
-        division = self.ui.lineEdit_31.text()
-        region = self.ui.lineEdit_34.text()
-        phone_number = self.ui.lineEdit_35.text()
-        SNILS = self.ui.lineEdit_30.text()
+        kab = int(self.ui.office.text())
+        street = self.ui.street.text()
+        home  = self.ui.house_num.text()
+        surname = self.ui.surname.text()
+        name = self.ui.name.text()
+        patronymic = self.ui.patronymic.text()
+        birthday = self.ui.born_date.text()
+        gender = "M" if self.ui.gender_M.setChecked(True) else "Ж"
+        post = self.ui.post.text()
+        rank = self.ui.rank.text()
+        division = self.ui.division.text()
+        region = self.ui.region.text()
+        phone_number = self.ui.phone_number.text()
+        SNILS = self.ui.snils.text()
         insert_to_kab(kab, street, home)
         print(surname, name, patronymic, birthday, gender, post, rank, division, region, phone_number, SNILS)
         insert_to_employee(surname, name, patronymic, birthday, gender, post, rank, division, region, phone_number, SNILS)
-        model = self.ui.lineEdit.text()
-        invent_num = self.ui.lineEdit_2.text()
-        IP = self.ui.lineEdit_4.text()
-        virtual_IP = self.ui.lineEdit_3.text()
+        model = self.ui.model.text()
+        invent_num = self.ui.invent_num.text()
+        IP = self.ui.IP.text()
+        virtual_IP = self.ui.virtual_IP.text()
         kab_code = get_id_kab()
         emp_code = get_id_emp()
         insert_to_sys_unit(model, invent_num, IP, virtual_IP, kab_code, emp_code)
@@ -67,27 +68,27 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def update_button_positions(self):
         if self.current_page_index == 0:
-            self.ui.pushButton.setGeometry(0, 0, 0, 0)
-            self.ui.pushButton_2.setGeometry(405, 615, 251, 81)
+            self.ui.back.setGeometry(0, 0, 0, 0)
+            self.ui.forward.setGeometry(405, 615, 251, 81)
         elif self.current_page_index == 4:
-            self.ui.pushButton.setGeometry(405, 615, 251, 81)
-            self.ui.pushButton_2.setGeometry(0, 0, 0, 0)
+            self.ui.back.setGeometry(405, 615, 251, 81)
+            self.ui.forward.setGeometry(0, 0, 0, 0)
         else:
-            self.ui.pushButton.setGeometry(405, 615, 101, 81)
-            self.ui.pushButton_2.setGeometry(555, 615, 101, 81)
+            self.ui.back.setGeometry(405, 615, 101, 81)
+            self.ui.forward.setGeometry(555, 615, 101, 81)
 
     def add_row(self):
-        row_count = self.ui.tableWidget.rowCount()
-        self.ui.tableWidget.insertRow(row_count)
+        row_count = self.ui.table_tech.rowCount()
+        self.ui.table_tech.insertRow(row_count)
 
     def delete_row(self):
-        selected_row = self.ui.tableWidget.currentRow()
+        selected_row = self.ui.table_tech.currentRow()
         if selected_row != -1:
-            self.ui.tableWidget.removeRow(selected_row)
+            self.ui.table_tech.removeRow(selected_row)
         else:
-            row_count = self.ui.tableWidget.rowCount()
+            row_count = self.ui.table_tech.rowCount()
             if row_count > 0:
-                self.ui.tableWidget.removeRow(row_count - 1)
+                self.ui.table_tech.removeRow(row_count - 1)
 
     def open_os_window(self):
         self.os_window = OSWindow()
@@ -95,21 +96,21 @@ class MainWindow(QtWidgets.QMainWindow):
         self.os_window.show()
 
     def delete_os(self):
-        selected_row = self.ui.tableWidget_2.currentRow()
+        selected_row = self.ui.table_os.currentRow()
         if selected_row != -1:
-            self.ui.tableWidget_2.removeRow(selected_row)
+            self.ui.table_os.removeRow(selected_row)
         else:
-            row_count = self.ui.tableWidget_2.rowCount()
+            row_count = self.ui.table_os.rowCount()
             if row_count > 0:
-                self.ui.tableWidget_2.removeRow(row_count - 1)
+                self.ui.table_os.removeRow(row_count - 1)
 
 
 
     def handle_os_item_click(self, item):
         selected_os = item.text()
-        row_count = self.ui.tableWidget_2.rowCount()
-        self.ui.tableWidget_2.insertRow(row_count)
-        self.ui.tableWidget_2.setItem(row_count, 0, QtWidgets.QTableWidgetItem(selected_os))
+        row_count = self.ui.table_os.rowCount()
+        self.ui.table_os.insertRow(row_count)
+        self.ui.table_os.setItem(row_count, 0, QtWidgets.QTableWidgetItem(selected_os))
         # Обновляем значение выбранного инвентарного номера при выборе операционной системы
         self.selected_inventory_number = selected_os
 
@@ -207,31 +208,31 @@ class SearchWindow(QtWidgets.QMainWindow):
 
             if result:
                 self.main_window = MainWindow()
-                self.main_window.ui.lineEdit_8.setText(result[1])  # Фамилия
-                self.main_window.ui.lineEdit_9.setText(result[2])  # Имя
-                self.main_window.ui.lineEdit_28.setText(result[3])  # Отчество
-                self.main_window.ui.lineEdit_29.setText(str(result[4])[:-9].replace("-", "."))  # Дата рождения
+                self.main_window.ui.surname.setText(result[1])  # Фамилия
+                self.main_window.ui.name.setText(result[2])  # Имя
+                self.main_window.ui.patronymic.setText(result[3])  # Отчество
+                self.main_window.ui.born_date.setText(str(result[4])[:-9].replace("-", "."))  # Дата рождения
 
                 if result[5] == 'М':
-                    self.main_window.ui.radioButton.setChecked(True)  # Пол
+                    self.main_window.ui.gender_M.setChecked(True)  # Пол
                 else:
-                    self.main_window.ui.radioButton_2.setChecked(True)
+                    self.main_window.ui.gender_W.setChecked(True)
 
-                self.main_window.ui.lineEdit_33.setText(result[6])  # Должность
-                self.main_window.ui.lineEdit_32.setText(result[7])  # Звание
-                self.main_window.ui.lineEdit_31.setText(result[8])  # Подразделение
-                self.main_window.ui.lineEdit_34.setText(result[9])  # Регион
-                self.main_window.ui.lineEdit_35.setText(result[10])  # Телефон
-                self.main_window.ui.lineEdit_30.setText(result[11])  # СНИЛС
+                self.main_window.ui.post.setText(result[6])  # Должность
+                self.main_window.ui.rank.setText(result[7])  # Звание
+                self.main_window.ui.division.setText(result[8])  # Подразделение
+                self.main_window.ui.region.setText(result[9])  # Регион
+                self.main_window.ui.phone_number.setText(result[10])  # Телефон
+                self.main_window.ui.snils.setText(result[11])  # СНИЛС
 
-                self.main_window.ui.lineEdit.setText(result[12])  # Модель системного блока
-                self.main_window.ui.lineEdit_2.setText(result[13])  # Инвентарный номер
-                self.main_window.ui.lineEdit_4.setText(result[14])  # IP
-                self.main_window.ui.lineEdit_3.setText(result[15])  # Виртуальный IP
+                self.main_window.ui.model.setText(result[12])  # Модель системного блока
+                self.main_window.ui.invent_num.setText(result[13])  # Инвентарный номер
+                self.main_window.ui.IP.setText(result[14])  # IP
+                self.main_window.ui.virtual_IP.setText(result[15])  # Виртуальный IP
 
-                self.main_window.ui.lineEdit_7.setText(str(result[16]))  # Номер кабинета
-                self.main_window.ui.lineEdit_5.setText(result[17])  # Улица
-                self.main_window.ui.lineEdit_6.setText(result[18])  # Дом
+                self.main_window.ui.office.setText(str(result[16]))  # Номер кабинета
+                self.main_window.ui.street.setText(result[17])  # Улица
+                self.main_window.ui.house_num.setText(result[18])  # Дом
 
                 # Добавляем данные о технических средствах в таблицу tableWidget
                 tech_query = """
@@ -249,11 +250,11 @@ class SearchWindow(QtWidgets.QMainWindow):
                 print("Результат запроса:", tech_result)
 
                 for row_data in tech_result:
-                    row_position = self.main_window.ui.tableWidget.rowCount()
-                    self.main_window.ui.tableWidget.insertRow(row_position)
+                    row_position = self.main_window.ui.table_tech.rowCount()
+                    self.main_window.ui.table_tech.insertRow(row_position)
                     for col_num, col_data in enumerate(row_data):
-                        self.main_window.ui.tableWidget.setItem(row_position, col_num,
-                                                                QtWidgets.QTableWidgetItem(str(col_data)))
+                        self.main_window.ui.table_tech.setItem(row_position, col_num,
+                                                               QtWidgets.QTableWidgetItem(str(col_data)))
 
                 self.main_window.show()
             else:

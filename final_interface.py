@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'untitled.ui'
+# Form implementation generated from reading ui file 'final_interface.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -49,7 +49,7 @@ class Ui_MainWindow(object):
         self.label_5 = QtWidgets.QLabel(self.widget_1)
         self.label_5.setGeometry(QtCore.QRect(25, 135, 21, 20))
         self.label_5.setText("")
-        self.label_5.setPixmap(QtGui.QPixmap("icons/ellipsis.png"))
+        self.label_5.setPixmap(QtGui.QPixmap("../MVD2/icons/ellipsis.png"))
         self.label_5.setScaledContents(True)
         self.label_5.setObjectName("label_5")
         self.label_6 = QtWidgets.QLabel(self.widget_1)
@@ -142,7 +142,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.model.setObjectName("lineEdit")
+        self.model.setObjectName("model")
         self.invent_num = QtWidgets.QLineEdit(self.widget_1)
         self.invent_num.setGeometry(QtCore.QRect(450, 280, 161, 31))
         font = QtGui.QFont()
@@ -184,7 +184,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.invent_num.setObjectName("lineEdit_2")
+        self.invent_num.setObjectName("invent_num")
         self.virtual_IP = QtWidgets.QLineEdit(self.widget_1)
         self.virtual_IP.setGeometry(QtCore.QRect(130, 400, 161, 31))
         font = QtGui.QFont()
@@ -226,7 +226,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.virtual_IP.setObjectName("lineEdit_3")
+        self.virtual_IP.setObjectName("virtual_IP")
         self.IP = QtWidgets.QLineEdit(self.widget_1)
         self.IP.setGeometry(QtCore.QRect(450, 400, 161, 31))
         font = QtGui.QFont()
@@ -268,7 +268,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.IP.setObjectName("lineEdit_4")
+        self.IP.setObjectName("IP")
         self.street = QtWidgets.QLineEdit(self.widget_1)
         self.street.setGeometry(QtCore.QRect(130, 520, 161, 31))
         font = QtGui.QFont()
@@ -310,7 +310,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.street.setObjectName("lineEdit_5")
+        self.street.setObjectName("street")
         self.house_num = QtWidgets.QLineEdit(self.widget_1)
         self.house_num.setGeometry(QtCore.QRect(450, 520, 161, 31))
         font = QtGui.QFont()
@@ -352,14 +352,14 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.house_num.setObjectName("lineEdit_6")
-        self.office_2 = QtWidgets.QLineEdit(self.widget_1)
-        self.office_2.setGeometry(QtCore.QRect(780, 520, 161, 31))
+        self.house_num.setObjectName("house_num")
+        self.office = QtWidgets.QLineEdit(self.widget_1)
+        self.office.setGeometry(QtCore.QRect(780, 520, 161, 31))
         font = QtGui.QFont()
         font.setFamily("Comfortaa")
         font.setPointSize(11)
-        self.office_2.setFont(font)
-        self.office_2.setStyleSheet("QLineEdit {\n"
+        self.office.setFont(font)
+        self.office.setStyleSheet("QLineEdit {\n"
 "    border: 1px solid #ccc;\n"
 "    border-radius: 8px;\n"
 "    padding: 2px;\n"
@@ -394,11 +394,11 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.office_2.setObjectName("lineEdit_7")
+        self.office.setObjectName("office")
         self.label_19 = QtWidgets.QLabel(self.widget_1)
         self.label_19.setGeometry(QtCore.QRect(240, 40, 581, 55))
         self.label_19.setText("")
-        self.label_19.setPixmap(QtGui.QPixmap("icons/Step1.PNG"))
+        self.label_19.setPixmap(QtGui.QPixmap("../MVD2/icons/Step1.PNG"))
         self.label_19.setScaledContents(True)
         self.label_19.setObjectName("label_19")
         self.stackedWidget.addWidget(self.widget_1)
@@ -429,7 +429,7 @@ class Ui_MainWindow(object):
         self.label_16 = QtWidgets.QLabel(self.widget_2)
         self.label_16.setGeometry(QtCore.QRect(25, 135, 21, 20))
         self.label_16.setText("")
-        self.label_16.setPixmap(QtGui.QPixmap("icons/ellipsis.png"))
+        self.label_16.setPixmap(QtGui.QPixmap("../MVD2/icons/ellipsis.png"))
         self.label_16.setScaledContents(True)
         self.label_16.setObjectName("label_16")
         self.label_17 = QtWidgets.QLabel(self.widget_2)
@@ -484,9 +484,9 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
-        self.table_tech.setObjectName("tableWidget")
+        self.table_tech.setObjectName("table_tech")
         self.table_tech.setColumnCount(3)
-        self.table_tech.setRowCount(0)
+        self.table_tech.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
         self.table_tech.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -507,7 +507,7 @@ class Ui_MainWindow(object):
 "color: white;\n"
 "}")
         self.delete_tech.setAutoDefault(False)
-        self.delete_tech.setObjectName("pushButton_5")
+        self.delete_tech.setObjectName("delete_tech")
         self.add_tech = QtWidgets.QPushButton(self.widget_2)
         self.add_tech.setGeometry(QtCore.QRect(160, 500, 61, 31))
         font = QtGui.QFont()
@@ -519,7 +519,7 @@ class Ui_MainWindow(object):
 "border-radius: 14px;\n"
 "color: white;\n"
 "}")
-        self.add_tech.setObjectName("pushButton_6")
+        self.add_tech.setObjectName("add_tech")
         self.delete_os = QtWidgets.QPushButton(self.widget_2)
         self.delete_os.setGeometry(QtCore.QRect(780, 500, 51, 31))
         font = QtGui.QFont()
@@ -531,7 +531,7 @@ class Ui_MainWindow(object):
 "border-radius: 14px;\n"
 "color: white;\n"
 "}")
-        self.delete_os.setObjectName("pushButton_7")
+        self.delete_os.setObjectName("delete_os")
         self.add_os = QtWidgets.QPushButton(self.widget_2)
         self.add_os.setGeometry(QtCore.QRect(840, 500, 51, 31))
         font = QtGui.QFont()
@@ -543,11 +543,11 @@ class Ui_MainWindow(object):
 "border-radius: 14px;\n"
 "color: white;\n"
 "}")
-        self.add_os.setObjectName("pushButton_8")
+        self.add_os.setObjectName("add_os")
         self.label_20 = QtWidgets.QLabel(self.widget_2)
         self.label_20.setGeometry(QtCore.QRect(240, 40, 581, 55))
         self.label_20.setText("")
-        self.label_20.setPixmap(QtGui.QPixmap("icons/Step2.PNG"))
+        self.label_20.setPixmap(QtGui.QPixmap("../MVD2/icons/Step2.PNG"))
         self.label_20.setScaledContents(True)
         self.label_20.setObjectName("label_20")
         self.table_os = QtWidgets.QTableWidget(self.widget_2)
@@ -588,7 +588,7 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
-        self.table_os.setObjectName("tableWidget_2")
+        self.table_os.setObjectName("table_os")
         self.table_os.setColumnCount(1)
         self.table_os.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
@@ -600,7 +600,7 @@ class Ui_MainWindow(object):
         self.label_21 = QtWidgets.QLabel(self.widget_3)
         self.label_21.setGeometry(QtCore.QRect(240, 40, 581, 55))
         self.label_21.setText("")
-        self.label_21.setPixmap(QtGui.QPixmap("icons/Step3.PNG"))
+        self.label_21.setPixmap(QtGui.QPixmap("../MVD2/icons/Step3.PNG"))
         self.label_21.setScaledContents(True)
         self.label_21.setObjectName("label_21")
         self.label_22 = QtWidgets.QLabel(self.widget_3)
@@ -628,13 +628,13 @@ class Ui_MainWindow(object):
         self.label_24 = QtWidgets.QLabel(self.widget_3)
         self.label_24.setGeometry(QtCore.QRect(25, 95, 21, 20))
         self.label_24.setText("")
-        self.label_24.setPixmap(QtGui.QPixmap("icons/ellipsis.png"))
+        self.label_24.setPixmap(QtGui.QPixmap("../MVD2/icons/ellipsis.png"))
         self.label_24.setScaledContents(True)
         self.label_24.setObjectName("label_24")
         self.label_25 = QtWidgets.QLabel(self.widget_3)
         self.label_25.setGeometry(QtCore.QRect(25, 135, 21, 20))
         self.label_25.setText("")
-        self.label_25.setPixmap(QtGui.QPixmap("icons/check.png"))
+        self.label_25.setPixmap(QtGui.QPixmap("../MVD2/icons/check.png"))
         self.label_25.setScaledContents(True)
         self.label_25.setObjectName("label_25")
         self.surname = QtWidgets.QLineEdit(self.widget_3)
@@ -678,7 +678,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.surname.setObjectName("lineEdit_8")
+        self.surname.setObjectName("surname")
         self.name = QtWidgets.QLineEdit(self.widget_3)
         self.name.setGeometry(QtCore.QRect(450, 280, 161, 31))
         font = QtGui.QFont()
@@ -720,7 +720,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.name.setObjectName("lineEdit_9")
+        self.name.setObjectName("name")
         self.label_27 = QtWidgets.QLabel(self.widget_3)
         self.label_27.setGeometry(QtCore.QRect(500, 240, 141, 41))
         font = QtGui.QFont()
@@ -769,7 +769,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.patronymic.setObjectName("lineEdit_28")
+        self.patronymic.setObjectName("patronymic")
         self.label_80 = QtWidgets.QLabel(self.widget_3)
         self.label_80.setGeometry(QtCore.QRect(790, 240, 201, 41))
         font = QtGui.QFont()
@@ -818,7 +818,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.born_date.setObjectName("lineEdit_29")
+        self.born_date.setObjectName("born_date")
         self.label_81 = QtWidgets.QLabel(self.widget_3)
         self.label_81.setGeometry(QtCore.QRect(110, 360, 251, 41))
         font = QtGui.QFont()
@@ -839,14 +839,14 @@ class Ui_MainWindow(object):
         font.setFamily("Comfortaa")
         font.setPointSize(14)
         self.gender_M.setFont(font)
-        self.gender_M.setObjectName("radioButton")
+        self.gender_M.setObjectName("gender_M")
         self.gender_W = QtWidgets.QRadioButton(self.widget_3)
         self.gender_W.setGeometry(QtCore.QRect(540, 400, 151, 41))
         font = QtGui.QFont()
         font.setFamily("Comfortaa")
         font.setPointSize(14)
         self.gender_W.setFont(font)
-        self.gender_W.setObjectName("radioButton_2")
+        self.gender_W.setObjectName("gender_W")
         self.snils = QtWidgets.QLineEdit(self.widget_3)
         self.snils.setGeometry(QtCore.QRect(130, 520, 161, 31))
         font = QtGui.QFont()
@@ -888,7 +888,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.snils.setObjectName("lineEdit_30")
+        self.snils.setObjectName("snils")
         self.label_83 = QtWidgets.QLabel(self.widget_3)
         self.label_83.setGeometry(QtCore.QRect(160, 480, 151, 41))
         font = QtGui.QFont()
@@ -903,13 +903,13 @@ class Ui_MainWindow(object):
         font.setPointSize(14)
         self.label_84.setFont(font)
         self.label_84.setObjectName("label_84")
-        self.pushButton_17 = QtWidgets.QPushButton(self.widget_3)
-        self.pushButton_17.setGeometry(QtCore.QRect(450, 520, 161, 31))
+        self.attach_passport = QtWidgets.QPushButton(self.widget_3)
+        self.attach_passport.setGeometry(QtCore.QRect(450, 520, 161, 31))
         font = QtGui.QFont()
         font.setFamily("Comfortaa")
         font.setPointSize(12)
-        self.pushButton_17.setFont(font)
-        self.pushButton_17.setStyleSheet("QPushButton {\n"
+        self.attach_passport.setFont(font)
+        self.attach_passport.setStyleSheet("QPushButton {\n"
 "background-color: #0A74F0;\n"
 "color: white; \n"
 "border-radius: 14px;\n"
@@ -923,7 +923,7 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "background-color: #0559F0;\n"
 "}")
-        self.pushButton_17.setObjectName("pushButton_17")
+        self.attach_passport.setObjectName("attach_passport")
         self.label_28 = QtWidgets.QLabel(self.widget_3)
         self.label_28.setGeometry(QtCore.QRect(150, 240, 201, 41))
         font = QtGui.QFont()
@@ -948,7 +948,7 @@ class Ui_MainWindow(object):
         self.gender_W.raise_()
         self.snils.raise_()
         self.label_84.raise_()
-        self.pushButton_17.raise_()
+        self.attach_passport.raise_()
         self.label_28.raise_()
         self.surname.raise_()
         self.stackedWidget.addWidget(self.widget_3)
@@ -957,19 +957,19 @@ class Ui_MainWindow(object):
         self.label_85 = QtWidgets.QLabel(self.widget_4)
         self.label_85.setGeometry(QtCore.QRect(25, 95, 21, 20))
         self.label_85.setText("")
-        self.label_85.setPixmap(QtGui.QPixmap("icons/ellipsis.png"))
+        self.label_85.setPixmap(QtGui.QPixmap("../MVD2/icons/ellipsis.png"))
         self.label_85.setScaledContents(True)
         self.label_85.setObjectName("label_85")
         self.label_86 = QtWidgets.QLabel(self.widget_4)
         self.label_86.setGeometry(QtCore.QRect(25, 135, 21, 20))
         self.label_86.setText("")
-        self.label_86.setPixmap(QtGui.QPixmap("icons/check.png"))
+        self.label_86.setPixmap(QtGui.QPixmap("../MVD2/icons/check.png"))
         self.label_86.setScaledContents(True)
         self.label_86.setObjectName("label_86")
         self.label_87 = QtWidgets.QLabel(self.widget_4)
         self.label_87.setGeometry(QtCore.QRect(240, 40, 581, 55))
         self.label_87.setText("")
-        self.label_87.setPixmap(QtGui.QPixmap("icons/Step4.PNG"))
+        self.label_87.setPixmap(QtGui.QPixmap("../MVD2/icons/Step4.PNG"))
         self.label_87.setScaledContents(True)
         self.label_87.setObjectName("label_87")
         self.label_88 = QtWidgets.QLabel(self.widget_4)
@@ -1035,7 +1035,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.division.setObjectName("lineEdit_31")
+        self.division.setObjectName("division")
         self.label_90 = QtWidgets.QLabel(self.widget_4)
         self.label_90.setGeometry(QtCore.QRect(110, 240, 251, 41))
         font = QtGui.QFont()
@@ -1084,7 +1084,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.rank.setObjectName("lineEdit_32")
+        self.rank.setObjectName("rank")
         self.label_91 = QtWidgets.QLabel(self.widget_4)
         self.label_91.setGeometry(QtCore.QRect(480, 240, 181, 41))
         font = QtGui.QFont()
@@ -1133,7 +1133,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.post.setObjectName("lineEdit_33")
+        self.post.setObjectName("post")
         self.label_92 = QtWidgets.QLabel(self.widget_4)
         self.label_92.setGeometry(QtCore.QRect(790, 240, 251, 41))
         font = QtGui.QFont()
@@ -1182,7 +1182,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.region.setObjectName("lineEdit_34")
+        self.region.setObjectName("region")
         self.label_93 = QtWidgets.QLabel(self.widget_4)
         self.label_93.setGeometry(QtCore.QRect(170, 360, 171, 41))
         font = QtGui.QFont()
@@ -1231,7 +1231,7 @@ class Ui_MainWindow(object):
 "    box-shadow: 2px 2px 5px #0A74F0;\n"
 "}\n"
 "")
-        self.phone_number.setObjectName("lineEdit_35")
+        self.phone_number.setObjectName("phone_number")
         self.label_94 = QtWidgets.QLabel(self.widget_4)
         self.label_94.setGeometry(QtCore.QRect(420, 360, 331, 41))
         font = QtGui.QFont()
@@ -1260,19 +1260,19 @@ class Ui_MainWindow(object):
         self.label_95 = QtWidgets.QLabel(self.widget_5)
         self.label_95.setGeometry(QtCore.QRect(25, 95, 21, 20))
         self.label_95.setText("")
-        self.label_95.setPixmap(QtGui.QPixmap("icons/check.png"))
+        self.label_95.setPixmap(QtGui.QPixmap("../MVD2/icons/check.png"))
         self.label_95.setScaledContents(True)
         self.label_95.setObjectName("label_95")
         self.label_96 = QtWidgets.QLabel(self.widget_5)
         self.label_96.setGeometry(QtCore.QRect(25, 135, 21, 20))
         self.label_96.setText("")
-        self.label_96.setPixmap(QtGui.QPixmap("icons/check.png"))
+        self.label_96.setPixmap(QtGui.QPixmap("../MVD2/icons/check.png"))
         self.label_96.setScaledContents(True)
         self.label_96.setObjectName("label_96")
         self.label_97 = QtWidgets.QLabel(self.widget_5)
         self.label_97.setGeometry(QtCore.QRect(240, 40, 581, 55))
         self.label_97.setText("")
-        self.label_97.setPixmap(QtGui.QPixmap("icons/Finish.PNG"))
+        self.label_97.setPixmap(QtGui.QPixmap("../MVD2/icons/Finish.PNG"))
         self.label_97.setScaledContents(True)
         self.label_97.setObjectName("label_97")
         self.label_98 = QtWidgets.QLabel(self.widget_5)
@@ -1317,14 +1317,14 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "background-color: #0559F0;\n"
 "}")
-        self.post_new_emp.setObjectName("pushButton_18")
-        self.pushButton_19 = QtWidgets.QPushButton(self.widget_5)
-        self.pushButton_19.setGeometry(QtCore.QRect(340, 370, 371, 81))
+        self.post_new_emp.setObjectName("post_new_emp")
+        self.get_docx = QtWidgets.QPushButton(self.widget_5)
+        self.get_docx.setGeometry(QtCore.QRect(340, 370, 371, 81))
         font = QtGui.QFont()
         font.setFamily("Comfortaa")
         font.setPointSize(15)
-        self.pushButton_19.setFont(font)
-        self.pushButton_19.setStyleSheet("QPushButton {\n"
+        self.get_docx.setFont(font)
+        self.get_docx.setStyleSheet("QPushButton {\n"
 "background-color: #0A74F0;\n"
 "color: white; \n"
 "border-radius: 14px;\n"
@@ -1338,7 +1338,7 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "background-color: #0559F0;\n"
 "}")
-        self.pushButton_19.setObjectName("pushButton_19")
+        self.get_docx.setObjectName("get_docx")
         self.stackedWidget.addWidget(self.widget_5)
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(50, 10, 161, 71))
@@ -1365,7 +1365,7 @@ class Ui_MainWindow(object):
 "\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icons/free-icon-personal-data-5891034.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../MVD2/icons/free-icon-personal-data-5891034.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_4.setIcon(icon)
         self.pushButton_4.setObjectName("pushButton_4")
         self.back = QtWidgets.QPushButton(self.centralwidget)
@@ -1388,7 +1388,7 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "background-color: #0559F0;\n"
 "}")
-        self.back.setObjectName("pushButton")
+        self.back.setObjectName("back")
         self.forward = QtWidgets.QPushButton(self.centralwidget)
         self.forward.setGeometry(QtCore.QRect(555, 615, 101, 81))
         font = QtGui.QFont()
@@ -1409,12 +1409,12 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "background-color: #0559F0;\n"
 "}")
-        self.forward.setObjectName("pushButton_2")
+        self.forward.setObjectName("forward")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(730, 530, 461, 321))
         self.label_4.setStyleSheet("background-color: none;")
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap("icons/logo.png"))
+        self.label_4.setPixmap(QtGui.QPixmap("../MVD2/icons/logo.png"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
@@ -1430,7 +1430,7 @@ class Ui_MainWindow(object):
 "\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("icons/free-icon-pc-4699800.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("../MVD2/icons/free-icon-pc-4699800.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_3.setIcon(icon1)
         self.pushButton_3.setObjectName("pushButton_3")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -1477,7 +1477,7 @@ class Ui_MainWindow(object):
         self.gender_W.setText(_translate("MainWindow", "Женский"))
         self.label_83.setText(_translate("MainWindow", "СНИЛС"))
         self.label_84.setText(_translate("MainWindow", "Паспорт"))
-        self.pushButton_17.setText(_translate("MainWindow", "Прикрепить"))
+        self.attach_passport.setText(_translate("MainWindow", "Прикрепить"))
         self.label_28.setText(_translate("MainWindow", "Фамилия"))
         self.label_88.setText(_translate("MainWindow", "Рабочая информация"))
         self.label_89.setText(_translate("MainWindow", "Укажите рабочую информацию сотрудника"))
@@ -1489,11 +1489,10 @@ class Ui_MainWindow(object):
         self.label_98.setText(_translate("MainWindow", "Информация заполнена"))
         self.label_99.setText(_translate("MainWindow", "Выберите опцию"))
         self.post_new_emp.setText(_translate("MainWindow", "Записать в базу"))
-        self.pushButton_19.setText(_translate("MainWindow", "Получить документы"))
+        self.get_docx.setText(_translate("MainWindow", "Получить документы"))
         self.label_3.setText(_translate("MainWindow", "МВД"))
         self.pushButton_4.setText(_translate("MainWindow", "Сотрудник"))
         self.back.setText(_translate("MainWindow", "<"))
         self.forward.setText(_translate("MainWindow", ">"))
         self.pushButton_3.setText(_translate("MainWindow", "АРМ"))
-
 

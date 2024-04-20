@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1071</width>
-    <height>789</height>
+    <width>1061</width>
+    <height>762</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,15 +30,15 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="widget_1">
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>355</x>
+        <x>320</x>
         <y>100</y>
-        <width>341</width>
+        <width>681</width>
         <height>51</height>
        </rect>
       </property>
@@ -55,15 +55,15 @@
 </string>
       </property>
       <property name="text">
-       <string>Основния информация</string>
+       <string>Основная информация</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>230</x>
         <y>140</y>
-        <width>501</width>
+        <width>761</width>
         <height>51</height>
        </rect>
       </property>
@@ -96,7 +96,7 @@ color: grey;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/ellipsis.png</pixmap>
+       <pixmap>../MVD2/icons/ellipsis.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -105,9 +105,9 @@ color: grey;</string>
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>170</x>
         <y>240</y>
-        <width>81</width>
+        <width>161</width>
         <height>41</height>
        </rect>
       </property>
@@ -124,9 +124,9 @@ color: grey;</string>
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>410</x>
         <y>240</y>
-        <width>231</width>
+        <width>401</width>
         <height>41</height>
        </rect>
       </property>
@@ -145,7 +145,7 @@ color: grey;</string>
        <rect>
         <x>520</x>
         <y>360</y>
-        <width>21</width>
+        <width>181</width>
         <height>41</height>
        </rect>
       </property>
@@ -162,9 +162,9 @@ color: grey;</string>
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>120</x>
         <y>360</y>
-        <width>161</width>
+        <width>271</width>
         <height>41</height>
        </rect>
       </property>
@@ -175,15 +175,15 @@ color: grey;</string>
        </font>
       </property>
       <property name="text">
-       <string>Виртульный IP</string>
+       <string>Виртуальный IP</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>170</x>
         <y>480</y>
-        <width>71</width>
+        <width>171</width>
         <height>41</height>
        </rect>
       </property>
@@ -200,9 +200,9 @@ color: grey;</string>
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
-        <x>510</x>
+        <x>500</x>
         <y>480</y>
-        <width>51</width>
+        <width>131</width>
         <height>41</height>
        </rect>
       </property>
@@ -219,9 +219,9 @@ color: grey;</string>
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>730</x>
+        <x>800</x>
         <y>480</y>
-        <width>101</width>
+        <width>221</width>
         <height>41</height>
        </rect>
       </property>
@@ -235,10 +235,10 @@ color: grey;</string>
        <string>Кабинет</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="model">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>130</x>
         <y>280</y>
         <width>161</width>
         <height>31</height>
@@ -288,7 +288,7 @@ QLineEdit {
 </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="invent_num">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -341,10 +341,10 @@ QLineEdit {
 </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="virtual_IP">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>130</x>
         <y>400</y>
         <width>161</width>
         <height>31</height>
@@ -394,7 +394,7 @@ QLineEdit {
 </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_4">
+     <widget class="QLineEdit" name="IP">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -447,10 +447,10 @@ QLineEdit {
 </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_5">
+     <widget class="QLineEdit" name="street">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>130</x>
         <y>520</y>
         <width>161</width>
         <height>31</height>
@@ -500,7 +500,7 @@ QLineEdit {
 </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_6">
+     <widget class="QLineEdit" name="house_num">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -553,10 +553,10 @@ QLineEdit {
 </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_7">
+     <widget class="QLineEdit" name="office">
       <property name="geometry">
        <rect>
-        <x>700</x>
+        <x>780</x>
         <y>520</y>
         <width>161</width>
         <height>31</height>
@@ -619,7 +619,7 @@ QLineEdit {
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/Step1.PNG</pixmap>
+       <pixmap>../MVD2/icons/Step1.PNG</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -630,9 +630,9 @@ QLineEdit {
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>315</x>
+        <x>260</x>
         <y>100</y>
-        <width>451</width>
+        <width>741</width>
         <height>51</height>
        </rect>
       </property>
@@ -655,9 +655,9 @@ QLineEdit {
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>140</y>
-        <width>611</width>
+        <x>180</x>
+        <y>150</y>
+        <width>811</width>
         <height>51</height>
        </rect>
       </property>
@@ -690,7 +690,7 @@ color: grey;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/ellipsis.png</pixmap>
+       <pixmap>../MVD2/icons/ellipsis.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -701,7 +701,7 @@ color: grey;</string>
        <rect>
         <x>270</x>
         <y>200</y>
-        <width>151</width>
+        <width>291</width>
         <height>41</height>
        </rect>
       </property>
@@ -720,7 +720,7 @@ color: grey;</string>
        <rect>
         <x>830</x>
         <y>200</y>
-        <width>41</width>
+        <width>151</width>
         <height>41</height>
        </rect>
       </property>
@@ -734,7 +734,79 @@ color: grey;</string>
        <string>ОС</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QTableWidget" name="table_tech">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>240</y>
+        <width>501</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Comfortaa</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QHeaderView::section { 
+ background-color: rgba(10, 116, 240, 255);
+ color: white;
+ border:none; 
+}
+
+
+QTableWidget 
+{
+ color: black;
+ border:none; 
+}
+
+
+QTableWidget::item::selected
+{
+ color: black; 
+ background-color: rgba(10, 116, 240, 120);
+}
+
+
+
+QScrollBar::handle:vertical
+{
+ Background: rgba(10, 116, 240, 160);
+ Border: 0px solid grey;
+ Border-radius: 3px; 
+ Width: 8px;
+}
+
+
+</string>
+      </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>159</number>
+      </attribute>
+      <row/>
+      <column>
+       <property name="text">
+        <string>Наименование</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Марка</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Серийный номер</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="delete_tech">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -746,7 +818,7 @@ color: grey;</string>
       <property name="font">
        <font>
         <family>Comfortaa</family>
-        <pointsize>28</pointsize>
+        <pointsize>25</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -759,8 +831,11 @@ color: white;
       <property name="text">
        <string>-</string>
       </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="add_tech">
       <property name="geometry">
        <rect>
         <x>160</x>
@@ -772,7 +847,7 @@ color: white;
       <property name="font">
        <font>
         <family>Comfortaa</family>
-        <pointsize>28</pointsize>
+        <pointsize>25</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -786,7 +861,7 @@ color: white;
        <string>+</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="delete_os">
       <property name="geometry">
        <rect>
         <x>780</x>
@@ -798,7 +873,7 @@ color: white;
       <property name="font">
        <font>
         <family>Comfortaa</family>
-        <pointsize>28</pointsize>
+        <pointsize>25</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -812,7 +887,7 @@ color: white;
        <string>-</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_8">
+     <widget class="QPushButton" name="add_os">
       <property name="geometry">
        <rect>
         <x>840</x>
@@ -824,7 +899,7 @@ color: white;
       <property name="font">
        <font>
         <family>Comfortaa</family>
-        <pointsize>28</pointsize>
+        <pointsize>25</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -851,13 +926,13 @@ color: white;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/Step2.PNG</pixmap>
+       <pixmap>../MVD2/icons/Step2.PNG</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_2">
+     <widget class="QTableWidget" name="table_os">
       <property name="geometry">
        <rect>
         <x>760</x>
@@ -915,74 +990,6 @@ QScrollBar::handle:vertical
        </property>
       </column>
      </widget>
-     <widget class="QTableWidget" name="tableWidget">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>240</y>
-        <width>501</width>
-        <height>241</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Comfortaa</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QHeaderView::section { 
- background-color: rgba(10, 116, 240, 255);
- color: white;
- border:none; 
-}
-
-
-QTableWidget 
-{
- color: black;
- border:none; 
-}
-
-
-QTableWidget::item::selected
-{
- color: black; 
- background-color: rgba(10, 116, 240, 120);
-}
-
-
-
-QScrollBar::handle:vertical
-{
- Background: rgba(10, 116, 240, 160);
- Border: 0px solid grey;
- Border-radius: 3px; 
- Width: 8px;
-}
-
-
-</string>
-      </property>
-      <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>160</number>
-      </attribute>
-      <column>
-       <property name="text">
-        <string>Новый столбец</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Наименование</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Серийный номер</string>
-       </property>
-      </column>
-     </widget>
     </widget>
     <widget class="QWidget" name="widget_3">
      <widget class="QLabel" name="label_21">
@@ -998,7 +1005,7 @@ QScrollBar::handle:vertical
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/Step3.PNG</pixmap>
+       <pixmap>../MVD2/icons/Step3.PNG</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1007,9 +1014,9 @@ QScrollBar::handle:vertical
      <widget class="QLabel" name="label_22">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>320</x>
         <y>100</y>
-        <width>341</width>
+        <width>511</width>
         <height>51</height>
        </rect>
       </property>
@@ -1026,15 +1033,15 @@ QScrollBar::handle:vertical
 </string>
       </property>
       <property name="text">
-       <string>Основния информация</string>
+       <string>Основная информация</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_23">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>250</x>
         <y>140</y>
-        <width>471</width>
+        <width>611</width>
         <height>51</height>
        </rect>
       </property>
@@ -1067,7 +1074,7 @@ color: grey;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/ellipsis.png</pixmap>
+       <pixmap>../MVD2/icons/ellipsis.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1086,35 +1093,16 @@ color: grey;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/check.png</pixmap>
+       <pixmap>../MVD2/icons/check.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_26">
+     <widget class="QLineEdit" name="surname">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>240</y>
-        <width>131</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Comfortaa</family>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Фамилия</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_8">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
+        <x>130</x>
         <y>280</y>
         <width>161</width>
         <height>31</height>
@@ -1164,7 +1152,7 @@ QLineEdit {
 </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_9">
+     <widget class="QLineEdit" name="name">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -1220,9 +1208,9 @@ QLineEdit {
      <widget class="QLabel" name="label_27">
       <property name="geometry">
        <rect>
-        <x>510</x>
+        <x>500</x>
         <y>240</y>
-        <width>51</width>
+        <width>141</width>
         <height>41</height>
        </rect>
       </property>
@@ -1236,10 +1224,10 @@ QLineEdit {
        <string>Имя</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_28">
+     <widget class="QLineEdit" name="patronymic">
       <property name="geometry">
        <rect>
-        <x>700</x>
+        <x>780</x>
         <y>280</y>
         <width>161</width>
         <height>31</height>
@@ -1292,9 +1280,9 @@ QLineEdit {
      <widget class="QLabel" name="label_80">
       <property name="geometry">
        <rect>
-        <x>720</x>
+        <x>790</x>
         <y>240</y>
-        <width>141</width>
+        <width>201</width>
         <height>41</height>
        </rect>
       </property>
@@ -1308,10 +1296,10 @@ QLineEdit {
        <string>Отчество</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_29">
+     <widget class="QLineEdit" name="born_date">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>130</x>
         <y>400</y>
         <width>161</width>
         <height>31</height>
@@ -1364,9 +1352,9 @@ QLineEdit {
      <widget class="QLabel" name="label_81">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>110</x>
         <y>360</y>
-        <width>211</width>
+        <width>251</width>
         <height>41</height>
        </rect>
       </property>
@@ -1383,9 +1371,9 @@ QLineEdit {
      <widget class="QLabel" name="label_82">
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>500</x>
         <y>360</y>
-        <width>61</width>
+        <width>161</width>
         <height>41</height>
        </rect>
       </property>
@@ -1399,13 +1387,13 @@ QLineEdit {
        <string>Пол</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton">
+     <widget class="QRadioButton" name="gender_M">
       <property name="geometry">
        <rect>
-        <x>420</x>
+        <x>390</x>
         <y>400</y>
-        <width>141</width>
-        <height>31</height>
+        <width>151</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
@@ -1418,13 +1406,13 @@ QLineEdit {
        <string>Мужской</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_2">
+     <widget class="QRadioButton" name="gender_W">
       <property name="geometry">
        <rect>
-        <x>570</x>
+        <x>540</x>
         <y>400</y>
         <width>151</width>
-        <height>31</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
@@ -1437,10 +1425,10 @@ QLineEdit {
        <string>Женский</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_30">
+     <widget class="QLineEdit" name="snils">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>130</x>
         <y>520</y>
         <width>161</width>
         <height>31</height>
@@ -1493,9 +1481,9 @@ QLineEdit {
      <widget class="QLabel" name="label_83">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>160</x>
         <y>480</y>
-        <width>101</width>
+        <width>151</width>
         <height>41</height>
        </rect>
       </property>
@@ -1514,7 +1502,7 @@ QLineEdit {
        <rect>
         <x>470</x>
         <y>480</y>
-        <width>131</width>
+        <width>171</width>
         <height>41</height>
        </rect>
       </property>
@@ -1528,7 +1516,7 @@ QLineEdit {
        <string>Паспорт</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_17">
+     <widget class="QPushButton" name="attach_passport">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -1563,26 +1551,45 @@ background-color: #0559F0;
        <string>Прикрепить</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>240</y>
+        <width>201</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Comfortaa</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Фамилия</string>
+      </property>
+     </widget>
      <zorder>label_83</zorder>
      <zorder>label_21</zorder>
      <zorder>label_22</zorder>
      <zorder>label_23</zorder>
      <zorder>label_24</zorder>
      <zorder>label_25</zorder>
-     <zorder>label_26</zorder>
-     <zorder>lineEdit_8</zorder>
      <zorder>label_27</zorder>
-     <zorder>lineEdit_9</zorder>
+     <zorder>name</zorder>
      <zorder>label_80</zorder>
-     <zorder>lineEdit_28</zorder>
+     <zorder>patronymic</zorder>
      <zorder>label_81</zorder>
-     <zorder>lineEdit_29</zorder>
+     <zorder>born_date</zorder>
      <zorder>label_82</zorder>
-     <zorder>radioButton</zorder>
-     <zorder>radioButton_2</zorder>
-     <zorder>lineEdit_30</zorder>
+     <zorder>gender_M</zorder>
+     <zorder>gender_W</zorder>
+     <zorder>snils</zorder>
      <zorder>label_84</zorder>
-     <zorder>pushButton_17</zorder>
+     <zorder>attach_passport</zorder>
+     <zorder>label_28</zorder>
+     <zorder>surname</zorder>
     </widget>
     <widget class="QWidget" name="widget_4">
      <widget class="QLabel" name="label_85">
@@ -1598,7 +1605,7 @@ background-color: #0559F0;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/ellipsis.png</pixmap>
+       <pixmap>../MVD2/icons/ellipsis.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1617,7 +1624,7 @@ background-color: #0559F0;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/check.png</pixmap>
+       <pixmap>../MVD2/icons/check.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1636,7 +1643,7 @@ background-color: #0559F0;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/Step4.PNG</pixmap>
+       <pixmap>../MVD2/icons/Step4.PNG</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1645,7 +1652,7 @@ background-color: #0559F0;
      <widget class="QLabel" name="label_88">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>340</x>
         <y>100</y>
         <width>631</width>
         <height>51</height>
@@ -1670,9 +1677,9 @@ background-color: #0559F0;
      <widget class="QLabel" name="label_89">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>260</x>
         <y>140</y>
-        <width>751</width>
+        <width>721</width>
         <height>51</height>
        </rect>
       </property>
@@ -1692,10 +1699,10 @@ color: grey;</string>
        <string>Укажите рабочую информацию сотрудника</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_31">
+     <widget class="QLineEdit" name="division">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>130</x>
         <y>280</y>
         <width>161</width>
         <height>31</height>
@@ -1748,9 +1755,9 @@ QLineEdit {
      <widget class="QLabel" name="label_90">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>110</x>
         <y>240</y>
-        <width>221</width>
+        <width>251</width>
         <height>41</height>
        </rect>
       </property>
@@ -1764,7 +1771,7 @@ QLineEdit {
        <string>Подразделение</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_32">
+     <widget class="QLineEdit" name="rank">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -1820,9 +1827,9 @@ QLineEdit {
      <widget class="QLabel" name="label_91">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>480</x>
         <y>240</y>
-        <width>171</width>
+        <width>181</width>
         <height>41</height>
        </rect>
       </property>
@@ -1836,10 +1843,10 @@ QLineEdit {
        <string>Звание</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_33">
+     <widget class="QLineEdit" name="post">
       <property name="geometry">
        <rect>
-        <x>700</x>
+        <x>780</x>
         <y>280</y>
         <width>161</width>
         <height>31</height>
@@ -1892,7 +1899,7 @@ QLineEdit {
      <widget class="QLabel" name="label_92">
       <property name="geometry">
        <rect>
-        <x>710</x>
+        <x>790</x>
         <y>240</y>
         <width>251</width>
         <height>41</height>
@@ -1908,10 +1915,10 @@ QLineEdit {
        <string>Должность</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_34">
+     <widget class="QLineEdit" name="region">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>130</x>
         <y>400</y>
         <width>161</width>
         <height>31</height>
@@ -1964,9 +1971,9 @@ QLineEdit {
      <widget class="QLabel" name="label_93">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>170</x>
         <y>360</y>
-        <width>161</width>
+        <width>171</width>
         <height>41</height>
        </rect>
       </property>
@@ -1980,7 +1987,7 @@ QLineEdit {
        <string>Регион</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_35">
+     <widget class="QLineEdit" name="phone_number">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -2038,7 +2045,7 @@ QLineEdit {
        <rect>
         <x>420</x>
         <y>360</y>
-        <width>361</width>
+        <width>331</width>
         <height>41</height>
        </rect>
       </property>
@@ -2061,12 +2068,12 @@ QLineEdit {
      <zorder>label_87</zorder>
      <zorder>label_88</zorder>
      <zorder>label_89</zorder>
-     <zorder>lineEdit_31</zorder>
+     <zorder>division</zorder>
      <zorder>label_91</zorder>
-     <zorder>lineEdit_32</zorder>
-     <zorder>lineEdit_33</zorder>
-     <zorder>lineEdit_34</zorder>
-     <zorder>lineEdit_35</zorder>
+     <zorder>rank</zorder>
+     <zorder>post</zorder>
+     <zorder>region</zorder>
+     <zorder>phone_number</zorder>
     </widget>
     <widget class="QWidget" name="widget_5">
      <widget class="QLabel" name="label_95">
@@ -2082,7 +2089,7 @@ QLineEdit {
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/check.png</pixmap>
+       <pixmap>../MVD2/icons/check.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -2101,7 +2108,7 @@ QLineEdit {
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/check.png</pixmap>
+       <pixmap>../MVD2/icons/check.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -2120,7 +2127,7 @@ QLineEdit {
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>icons/Finish.PNG</pixmap>
+       <pixmap>../MVD2/icons/Finish.PNG</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -2129,9 +2136,9 @@ QLineEdit {
      <widget class="QLabel" name="label_98">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>310</x>
         <y>100</y>
-        <width>671</width>
+        <width>641</width>
         <height>51</height>
        </rect>
       </property>
@@ -2154,9 +2161,9 @@ QLineEdit {
      <widget class="QLabel" name="label_99">
       <property name="geometry">
        <rect>
-        <x>440</x>
+        <x>410</x>
         <y>140</y>
-        <width>581</width>
+        <width>531</width>
         <height>51</height>
        </rect>
       </property>
@@ -2176,7 +2183,7 @@ color: grey;</string>
        <string>Выберите опцию</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_18">
+     <widget class="QPushButton" name="post_new_emp">
       <property name="geometry">
        <rect>
         <x>340</x>
@@ -2211,7 +2218,7 @@ background-color: #0559F0;
        <string>Записать в базу</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_19">
+     <widget class="QPushButton" name="get_docx">
       <property name="geometry">
        <rect>
         <x>340</x>
@@ -2251,16 +2258,16 @@ background-color: #0559F0;
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>30</y>
-      <width>131</width>
-      <height>51</height>
+      <x>50</x>
+      <y>10</y>
+      <width>161</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Comfortaa</family>
-      <pointsize>28</pointsize>
+      <pointsize>36</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -2279,7 +2286,7 @@ font-weight: bold;</string>
      <rect>
       <x>50</x>
       <y>90</y>
-      <width>191</width>
+      <width>181</width>
       <height>31</height>
      </rect>
     </property>
@@ -2302,41 +2309,10 @@ border-radius: 14px;
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>icons/free-icon-personal-data-5891034.png</normaloff>icons/free-icon-personal-data-5891034.png</iconset>
+      <normaloff>../MVD2/icons/free-icon-personal-data-5891034.png</normaloff>../MVD2/icons/free-icon-personal-data-5891034.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>130</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comfortaa</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: white;
-color: black; 
-border-radius: 14px;
-
-}</string>
-    </property>
-    <property name="text">
-     <string>АРМ</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>icons/free-icon-pc-4699800.png</normaloff>icons/free-icon-pc-4699800.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="back">
     <property name="geometry">
      <rect>
       <x>405</x>
@@ -2371,7 +2347,7 @@ background-color: #0559F0;
      <string>&lt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="forward">
     <property name="geometry">
      <rect>
       <x>555</x>
@@ -2422,17 +2398,48 @@ background-color: #0559F0;
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>icons/logo.png</pixmap>
+     <pixmap>../MVD2/icons/logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>130</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comfortaa</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+background-color: white;
+color: black; 
+border-radius: 14px;
+
+}</string>
+    </property>
+    <property name="text">
+     <string>АРМ</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../MVD2/icons/free-icon-pc-4699800.png</normaloff>../MVD2/icons/free-icon-pc-4699800.png</iconset>
     </property>
    </widget>
   </widget>
  </widget>
  <resources>
   <include location="../Desktop/MVD1/icons/1.qrc"/>
-  <include location="icons/1.qrc"/>
+  <include location="../MVD2/icons/1.qrc"/>
  </resources>
  <connections/>
 </ui>
