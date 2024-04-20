@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>logo.png</file>
+    <file>check.png</file>
+    <file>ellipsis.png</file>
+    <file>Finish.PNG</file>
+    <file>free-icon-pc-4699800.png</file>
+    <file>free-icon-personal-data-5891034.png</file>
+    <file>Step1.PNG</file>
+    <file>Step2.PNG</file>
+    <file>Step3.PNG</file>
+    <file>Step4.PNG</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1029</width>
+    <height>771</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: white;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>660</y>
+      <width>241</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comfortaa</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+background-color: #0A74F0;
+color: white; 
+border-radius: 14px;
+
+}
+
+QPushButton:hover {
+background-color: #0559F0;
+}
+
+QPushButton:pressed {
+background-color: #0559F0;
+}</string>
+    </property>
+    <property name="text">
+     <string>Поиск</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>30</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comfortaa</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Поиск</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>230</y>
+      <width>901</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comfortaa</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QHeaderView::section { 
+ background-color: rgba(10, 116, 240, 255);
+ color: white;
+ border:none; 
+}
+
+
+QTableWidget 
+{
+ color: black;
+ border:none; 
+}
+
+
+QTableWidget::item::selected
+{
+ color: black; 
+ background-color: rgba(10, 116, 240, 120);
+}
+
+
+
+QScrollBar::handle:vertical
+{
+ Background: rgba(10, 116, 240, 160);
+ Border: 0px solid grey;
+ Border-radius: 3px; 
+ Width: 8px;
+}
+
+
+</string>
+    </property>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>120</number>
+    </attribute>
+    <attribute name="horizontalHeaderHighlightSections">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>60</number>
+    </attribute>
+    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+     <bool>true</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>id</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comfortaa</family>
+       <pointsize>12</pointsize>
+       <strikeout>false</strikeout>
+       <kerning>false</kerning>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Фамилия</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comfortaa</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Имя</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comfortaa</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Отчество</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comfortaa</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>СНИЛС</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comfortaa</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Инвентарный номер</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Comfortaa</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </column>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>120</y>
+      <width>970</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="bottomMargin">
+      <number>20</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <family>Comfortaa</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Фамилия</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="minimumSize">
+          <size>
+           <width>170</width>
+           <height>34</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Comfortaa</family>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2px;
+    background-color: white;
+}
+
+QLineEdit:hover {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
+}
+
+QLineEdit:focus {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
+}
+
+QLineEdit {
+    background-color: white;
+}
+
+QLineEdit::hover {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
+}
+
+QLineEdit::focus {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
+}
+
+QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 2px;
+    background-color: white;
+    box-shadow: 2px 2px 5px #0A74F0;
+}
+</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <family>Comfortaa</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Имя</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_2">
+         <property name="minimumSize">
+          <size>
+           <width>170</width>
+           <height>34</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Comfortaa</family>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2px;
+    background-color: white;
+}
+
+QLineEdit:hover {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
+}
+
+QLineEdit:focus {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
+}
+
+QLineEdit {
+    background-color: white;
+}
+
+QLineEdit::hover {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
+}
+
+QLineEdit::focus {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
+}
+
+QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 2px;
+    background-color: white;
+    box-shadow: 2px 2px 5px #0A74F0;
+}
+</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <family>Comfortaa</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Отчество</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_3">
+         <property name="minimumSize">
+          <size>
+           <width>170</width>
+           <height>34</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Comfortaa</family>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2px;
+    background-color: white;
+}
+
+QLineEdit:hover {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
+}
+
+QLineEdit:focus {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
+}
+
+QLineEdit {
+    background-color: white;
+}
+
+QLineEdit::hover {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
+}
+
+QLineEdit::focus {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
+}
+
+QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 2px;
+    background-color: white;
+    box-shadow: 2px 2px 5px #0A74F0;
+}
+</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <family>Comfortaa</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>СНИЛС</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_4">
+         <property name="minimumSize">
+          <size>
+           <width>170</width>
+           <height>34</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Comfortaa</family>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2px;
+    background-color: white;
+}
+
+QLineEdit:hover {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
+}
+
+QLineEdit:focus {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
+}
+
+QLineEdit {
+    background-color: white;
+}
+
+QLineEdit::hover {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
+}
+
+QLineEdit::focus {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
+}
+
+QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 2px;
+    background-color: white;
+    box-shadow: 2px 2px 5px #0A74F0;
+}
+</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Comfortaa</family>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Инвентарный номер</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_5">
+         <property name="minimumSize">
+          <size>
+           <width>170</width>
+           <height>34</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Comfortaa</family>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2px;
+    background-color: white;
+}
+
+QLineEdit:hover {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
+}
+
+QLineEdit:focus {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
+}
+
+QLineEdit {
+    background-color: white;
+}
+
+QLineEdit::hover {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
+}
+
+QLineEdit::focus {
+    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
+}
+
+QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 2px;
+    background-color: white;
+    box-shadow: 2px 2px 5px #0A74F0;
+}
+</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>660</y>
+      <width>241</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comfortaa</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+background-color: #0A74F0;
+color: white; 
+border-radius: 14px;
+
+}
+
+QPushButton:hover {
+background-color: #0559F0;
+}
+
+QPushButton:pressed {
+background-color: #0559F0;
+}</string>
+    </property>
+    <property name="text">
+     <string>Перейти</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
