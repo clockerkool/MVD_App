@@ -52,6 +52,30 @@ class MainWindow(QtWidgets.QMainWindow):
         kab_code = get_id_kab()
         emp_code = get_id_emp()
         insert_to_sys_unit(model, invent_num, IP, virtual_IP, kab_code, emp_code)
+        # ######
+        os = ""
+        for row in range(self.ui.table_os.rowCount()):
+            for column in range(self.ui.table_os.columnCount()):
+                item = self.ui.table_os.item(row, column)
+                if item is not None:
+                    os += item.text() + "; "
+        insert_to_os(os)
+        ###
+        table_values = []
+        for row in range(self.ui.table_tech.rowCount()):
+            row_values = []
+            for column in range(self.ui.table_tech.columnCount()):
+                item = self.ui.table_tech.item(row, column)
+                if item is not None:
+                    row_values.append(item.text())
+                else:
+                    row_values.append("")  # Если ячейка пуста, добавляем пустую строку
+            table_values.append(row_values)
+            print(table_values)
+        inset_to_tech(table_values)
+
+
+
 
 
     def previous_page(self):

@@ -72,8 +72,45 @@ def get_id_emp():
     print('Последний вставленный идентификатор:', last_id)
     return last_id
 
+def get_id_sysb():
+    conn_str = (
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+    )
+    conn = pyodbc.connect(conn_str)
+    cursor = conn.cursor()
+    cursor.execute('SELECT Max(КодСистемногоБлока) FROM СистемныеБлоки')
+    last_id = cursor.fetchone()[0]
+    print('Последний вставленный идентификатор:', last_id)
+    return last_id
 
 
+def insert_to_os(os):
+    conn_str = (
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+    )
+    conn = pyodbc.connect(conn_str)
+    cursor = conn.cursor()
+    sysb_id = get_id_sysb()
+    cursor.execute("insert into ОперационныеСистемы (Наименование, КодСистемногоБлока) values (?, ?)", os, sysb_id)
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+
+def inset_to_tech(container: tuple):
+    #сделать проверку на пустоту контейнера
+    conn_str = (
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+    )
+    conn = pyodbc.connect(conn_str)
+    cursor = conn.cursor()
+    sysb_id = get_id_sysb()
+    for name, mark, sys_num in container:
+        cursor.execute("insert into ТехническиеСредства (Наименование, Марка, СерийныйНомер, КодСистемногоБлока) values (?, ?, ?, ?)",
+                        name, mark, sys_num, sysb_id)
+    conn.commit()
+    cursor.close()
+    conn.close()
 
 
 

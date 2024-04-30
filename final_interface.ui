@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="widget_1">
      <widget class="QLabel" name="label">
@@ -1477,6 +1477,9 @@ QLineEdit {
 }
 </string>
       </property>
+      <property name="inputMask">
+       <string>000-000-000 00</string>
+      </property>
      </widget>
      <widget class="QLabel" name="label_83">
       <property name="geometry">
@@ -2038,6 +2041,9 @@ QLineEdit {
     box-shadow: 2px 2px 5px #0A74F0;
 }
 </string>
+      </property>
+      <property name="inputMask">
+       <string>00-00-00</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_94">
