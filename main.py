@@ -28,9 +28,20 @@ class MainWindow(QtWidgets.QMainWindow):
         self.update_button_positions()
 
     def add_data(self):
+        self.add_kab()
+        self.add_employee()
+        self.add_sys_unit()
+        self.add_os()
+        self.add_tech()
+
+
+    def add_kab(self):
         kab = int(self.ui.office.text())
         street = self.ui.street.text()
-        home  = self.ui.house_num.text()
+        home = self.ui.house_num.text()
+        insert_to_kab(kab, street, home)
+
+    def add_employee(self):
         surname = self.ui.surname.text()
         name = self.ui.name.text()
         patronymic = self.ui.patronymic.text()
@@ -42,9 +53,11 @@ class MainWindow(QtWidgets.QMainWindow):
         region = self.ui.region.text()
         phone_number = self.ui.phone_number.text()
         SNILS = self.ui.snils.text()
-        insert_to_kab(kab, street, home)
-        print(surname, name, patronymic, birthday, gender, post, rank, division, region, phone_number, SNILS)
-        insert_to_employee(surname, name, patronymic, birthday, gender, post, rank, division, region, phone_number, SNILS)
+        insert_to_employee(surname, name, patronymic, birthday, gender, post, rank, division, region, phone_number,
+                           SNILS)
+
+
+    def add_sys_unit(self):
         model = self.ui.model.text()
         invent_num = self.ui.invent_num.text()
         IP = self.ui.IP.text()
@@ -52,7 +65,9 @@ class MainWindow(QtWidgets.QMainWindow):
         kab_code = get_id_kab()
         emp_code = get_id_emp()
         insert_to_sys_unit(model, invent_num, IP, virtual_IP, kab_code, emp_code)
-        # ######
+
+
+    def add_os(self):
         os = ""
         for row in range(self.ui.table_os.rowCount()):
             for column in range(self.ui.table_os.columnCount()):
@@ -60,7 +75,9 @@ class MainWindow(QtWidgets.QMainWindow):
                 if item is not None:
                     os += item.text() + "; "
         insert_to_os(os)
-        ###
+
+
+    def add_tech(self):
         table_values = []
         for row in range(self.ui.table_tech.rowCount()):
             row_values = []
@@ -73,9 +90,6 @@ class MainWindow(QtWidgets.QMainWindow):
             table_values.append(row_values)
             print(table_values)
         inset_to_tech(table_values)
-
-
-
 
 
     def previous_page(self):
@@ -262,8 +276,8 @@ class SearchWindow(QtWidgets.QMainWindow):
                 tech_query = """
                     SELECT Наименование, Марка, [СерийныйНомер]
                     FROM [ТехническиеСредства]
-                    WHERE [Код системного блока] = (
-                        SELECT [Код системного блока] 
+                    WHERE [КодСистемногоБлока] = (
+                        SELECT [КодСистемногоБлока] 
                         FROM [СистемныеБлоки] 
                         WHERE [ИнвентарныйНомер] = ?
                     )
