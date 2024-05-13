@@ -1,6 +1,8 @@
 import sys
 import pyodbc
 from PyQt5 import QtWidgets
+
+import ui3
 from DB_functions import *
 #from ui import Ui_MainWindow as Ui_MainWindow2
 from ui1 import Ui_MainWindow as Ui_MainWindow1
@@ -27,47 +29,75 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.table_os.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.update_button_positions()
 
+    def get_user_data(self):
+        """Получение, введённых пользователем, данных"""
+        self.kab = int(self.ui.office.text())
+        self.street = self.ui.street.text()
+        self.home = self.ui.house_num.text()
+        self.surname = self.ui.surname.text()
+        self.name = self.ui.name.text()
+        self.patronymic = self.ui.patronymic.text()
+        self.birthday = self.ui.born_date.text()
+        self.gender = "M" if self.ui.gender_M.isChecked() else "Ж"
+        self.post = self.ui.post.text()
+        self.rank = self.ui.rank.text()
+        self.division = self.ui.division.text()
+        self.region = self.ui.region.text()
+        self.phone_number = self.ui.phone_number.text()
+        self.SNILS = self.ui.snils.text()
+        self.model = self.ui.model.text()
+        self.invent_num = self.ui.invent_num.text()
+        self.IP = self.ui.IP.text()
+        self.virtual_IP = self.ui.virtual_IP.text()
+        self.kab_code = get_id_kab()
+
     def add_data(self):
-        self.add_kab()
-        self.add_employee()
-        self.add_sys_unit()
+        """Добавление данных в БД"""
+        self.get_user_data()
+        self.temp_id = SearchWindow().id
+        print("ID_TO_UPDATE: ", self.temp_id)
+        if self.temp_id != None:
+            self.update_data()
+            return
+        insert_to_kab(self.kab, self.street, self.home)
+        insert_to_employee(self.surname, self.name, self.patronymic, self.birthday,
+                           self.gender, self.post, self.rank, self.division, self.region,
+                           self.phone_number,self.SNILS)
+        self.emp_code = get_id_emp()
+        insert_to_sys_unit(self.model, self.invent_num, self.IP, self.virtual_IP, self.kab_code, self.emp_code)
         self.add_os()
         self.add_tech()
 
 
-    def add_kab(self):
-        kab = int(self.ui.office.text())
-        street = self.ui.street.text()
-        home = self.ui.house_num.text()
-        insert_to_kab(kab, street, home)
+    def update_data(self):
+        update_emp(self.temp_id, self.surname, self.name, self.patronymic, self.birthday,
+                   self.gender, self.post, self.rank, self.division, self.region, self.phone_number, self.SNILS)
+        update_sys_unit(self.model, self.invent_num, self.IP, self.virtual_IP, self.temp_id)
+        update_kab(self.temp_id, self.kab, self.street, self.home)
 
-    def add_employee(self):
-        surname = self.ui.surname.text()
-        name = self.ui.name.text()
-        patronymic = self.ui.patronymic.text()
-        birthday = self.ui.born_date.text()
-        gender = "M" if self.ui.gender_M.setChecked(True) else "Ж"
-        post = self.ui.post.text()
-        rank = self.ui.rank.text()
-        division = self.ui.division.text()
-        region = self.ui.region.text()
-        phone_number = self.ui.phone_number.text()
-        SNILS = self.ui.snils.text()
-        insert_to_employee(surname, name, patronymic, birthday, gender, post, rank, division, region, phone_number,
-                           SNILS)
-
-
-    def add_sys_unit(self):
-        model = self.ui.model.text()
-        invent_num = self.ui.invent_num.text()
-        IP = self.ui.IP.text()
-        virtual_IP = self.ui.virtual_IP.text()
-        kab_code = get_id_kab()
-        emp_code = get_id_emp()
-        insert_to_sys_unit(model, invent_num, IP, virtual_IP, kab_code, emp_code)
-
+        ###
+        os = ""
+        for row in range(self.ui.table_os.rowCount()):
+            for column in range(self.ui.table_os.columnCount()):
+                item = self.ui.table_os.item(row, column)
+                if item is not None:
+                    os += item.text() + "; "
+        update_os(self.temp_id, os)
+        table_values = []
+        for row in range(self.ui.table_tech.rowCount()):
+            row_values = []
+            for column in range(self.ui.table_tech.columnCount()):
+                item = self.ui.table_tech.item(row, column)
+                if item is not None:
+                    row_values.append(item.text())
+                else:
+                    row_values.append("")  # Если ячейка пуста, добавляем пустую строку
+            table_values.append(row_values)
+        update_tech(self.temp_id, table_values)
+        SearchWindow.id = None
 
     def add_os(self):
+        """"Функция для записи OS в БД"""
         os = ""
         for row in range(self.ui.table_os.rowCount()):
             for column in range(self.ui.table_os.columnCount()):
@@ -78,6 +108,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def add_tech(self):
+        """Функция для записи Технических средств в БД"""
         table_values = []
         for row in range(self.ui.table_tech.rowCount()):
             row_values = []
@@ -158,7 +189,15 @@ class OSWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow1()
         self.ui.setupUi(self)
 
+
+
 class SearchWindow(QtWidgets.QMainWindow):
+    id = None
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(SearchWindow, cls).__new__(cls)
+        return cls.instance
+
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow3()
@@ -171,7 +210,6 @@ class SearchWindow(QtWidgets.QMainWindow):
         self.ui.tableWidget.setColumnWidth(3, 150)
         self.ui.tableWidget.setColumnWidth(4, 140)
         self.ui.tableWidget.setColumnWidth(5, 235)
-
         self.db_connection = pyodbc.connect(
             r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
             r'DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
@@ -212,7 +250,7 @@ class SearchWindow(QtWidgets.QMainWindow):
         cursor = self.db_connection.cursor()
         cursor.execute(query, params)
         result = cursor.fetchall()
-
+        #print(result)
         self.ui.tableWidget.setRowCount(0)
 
         for row_num, row_data in enumerate(result):
@@ -223,10 +261,13 @@ class SearchWindow(QtWidgets.QMainWindow):
     # Обработчик событий для таблицы
     def handle_table_item_click(self, item):
         selected_row = item.row()
+        print("SW:", self.ui.tableWidget.item(selected_row, 0).text())
+        SearchWindow.id = self.ui.tableWidget.item(selected_row, 0).text()
         self.selected_inventory_number = self.ui.tableWidget.item(selected_row, 5).text()
         print("Выбранный инвентарный номер:", self.selected_inventory_number)  # Выводим для отладки
 
     def open_main_window(self):
+
         if self.selected_inventory_number:
             query = """
                 SELECT Сотрудники.[Кодсотрудника], Сотрудники.Фамилия, Сотрудники.Имя, Сотрудники.Отчество,
@@ -283,6 +324,7 @@ class SearchWindow(QtWidgets.QMainWindow):
                     )
                 """
                 tech_cursor = self.db_connection.cursor()
+                print(result[13])
                 tech_cursor.execute(tech_query, (result[13],))  # Передаем код системного блока
                 tech_result = tech_cursor.fetchall()
                 print("Результат запроса:", tech_result)
@@ -298,21 +340,24 @@ class SearchWindow(QtWidgets.QMainWindow):
             else:
                 print("Данные не найдены")
 
+    def get_id_to_update(self):
+        return self.id
+
 
 class SelectWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
+        self.main_window = MainWindow()
+        self.search_window = SearchWindow()
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.selectMain)
         self.ui.pushButton_2.clicked.connect(self.selectSearch)
 
     def selectMain(self):
-        self.main_window = MainWindow()
         self.main_window.show()
 
     def selectSearch(self):
-        self.search_window = SearchWindow()
         self.search_window.show()
 
 
