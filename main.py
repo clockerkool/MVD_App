@@ -1,7 +1,8 @@
 import sys
 import pyodbc
 from PyQt5 import QtWidgets
-
+from WordDocx import *
+from ExcelGen import *
 import ui3
 from DB_functions import *
 #from ui import Ui_MainWindow as Ui_MainWindow2
@@ -26,6 +27,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.add_os.clicked.connect(self.open_os_window)
         self.ui.delete_os.clicked.connect(self.delete_os)
         self.ui.post_new_emp.clicked.connect(self.add_data)
+        self.ui.get_docx.clicked.connect(self.return_docx)
         self.ui.table_os.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.update_button_positions()
 
@@ -50,6 +52,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.IP = self.ui.IP.text()
         self.virtual_IP = self.ui.virtual_IP.text()
         self.kab_code = get_id_kab()
+        self.os = ""
+        for row in range(self.ui.table_os.rowCount()):
+            for column in range(self.ui.table_os.columnCount()):
+                item = self.ui.table_os.item(row, column)
+                if item is not None:
+                    self.os += item.text() + "; "
 
     def add_data(self):
         """Добавление данных в БД"""
@@ -98,13 +106,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def add_os(self):
         """"Функция для записи OS в БД"""
-        os = ""
-        for row in range(self.ui.table_os.rowCount()):
-            for column in range(self.ui.table_os.columnCount()):
-                item = self.ui.table_os.item(row, column)
-                if item is not None:
-                    os += item.text() + "; "
-        insert_to_os(os)
+        insert_to_os(self.os)
 
 
     def add_tech(self):
@@ -174,6 +176,16 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.ui.table_os.removeRow(row_count - 1)
 
 
+    def return_docx(self):
+        self.get_user_data()
+        get_request(f"{self.surname} {self.name[0]}.{self.patronymic[0]}")
+        get_tech(self.ui.table_tech.item(0, 0).text(), self.ui.table_tech.item(0, 1).text(), self.ui.table_tech.item(0, 2).text(),
+                 f"{self.street} {str(self.home)}", str(self.kab))
+        get_list1([self.surname, self.name, self.patronymic, self.birthday, self.gender, self.post, self.rank, self.division,
+                   self.region, self.kab, self.phone_number, "49-49-49", self.SNILS])
+        get_exel(["1", self.IP, self.virtual_IP, "инсппектор отдела статистики, Петров П.П."])
+        get_exel4([self.os, self.invent_num, f'г.Курган {self.street} {self.home}', self.kab, self.post,
+                   f"{self.surname} {self.name} {self.patronymic}", self.phone_number])
 
     def handle_os_item_click(self, item):
         selected_os = item.text()
@@ -291,8 +303,8 @@ class SearchWindow(QtWidgets.QMainWindow):
                 self.main_window.ui.name.setText(result[2])  # Имя
                 self.main_window.ui.patronymic.setText(result[3])  # Отчество
                 self.main_window.ui.born_date.setText(str(result[4])[:-9].replace("-", "."))  # Дата рождения
-
-                if result[5] == 'М':
+                print('result', result[5], ord(result[5]), ord('М'), len(result[5]))
+                if  ord(result[5]) == 77:
                     self.main_window.ui.gender_M.setChecked(True)  # Пол
                 else:
                     self.main_window.ui.gender_W.setChecked(True)
