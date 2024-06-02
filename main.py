@@ -19,7 +19,7 @@ import io
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowIcon(QIcon("icon_window.png"))
+        self.setWindowIcon(QIcon("icons/icon_window.png"))
         self.ui = Ui_MainWindow2()
         self.ui.setupUi(self)
         self.setFixedSize(self.size())
@@ -67,53 +67,65 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def add_data(self):
         """Добавление данных в БД"""
-        if self.check_fields() is False:
-            QMessageBox.information(self, "Внимание!", "Не все поля заполнены, либо заполнены некорректно!")
-            return
-        self.get_user_data()
-        self.temp_id = SearchWindow().id
-        print("ID_TO_UPDATE: ", self.temp_id)
-        if self.temp_id != None:
-            self.update_data()
-            return
-        insert_to_kab(self.kab, self.street, self.home)
-        insert_to_employee(self.surname, self.name, self.patronymic, self.birthday,
-                           self.gender, self.post, self.rank, self.division, self.region,
-                           self.phone_number,self.SNILS)
-        self.emp_code = get_id_emp()
-        insert_to_sys_unit(self.model, self.invent_num, self.IP, self.virtual_IP, self.kab_code, self.emp_code)
-        self.add_os()
-        self.add_tech()
+        try:
+            if self.check_fields() is False:
+                QMessageBox.information(self, "Внимание!", "Не все поля заполнены, либо заполнены некорректно!")
+                return
+            self.get_user_data()
+            self.temp_id = SearchWindow().id
+            print("ID_TO_UPDATE: ", self.temp_id)
+            if self.temp_id != None:
+                self.update_data()
+                return
+            insert_to_kab(self.kab, self.street, self.home)
+            insert_to_employee(self.surname, self.name, self.patronymic, self.birthday,
+                               self.gender, self.post, self.rank, self.division, self.region,
+                               self.phone_number,self.SNILS)
+            self.emp_code = get_id_emp()
+            insert_to_sys_unit(self.model, self.invent_num, self.IP, self.virtual_IP, self.kab_code, self.emp_code)
+            self.add_os()
+            self.add_tech()
+            QMessageBox.information(self, "Запись прошла успешно!")
+        except:
+            QMessageBox.information(self, "Что-то пошло не так!")
+
 
 
     def update_data(self):
-        update_emp(self.temp_id, self.surname, self.name, self.patronymic, self.birthday,
-                   self.gender, self.post, self.rank, self.division, self.region, self.phone_number, self.SNILS)
-        update_sys_unit(self.model, self.invent_num, self.IP, self.virtual_IP, self.temp_id)
-        update_kab(self.temp_id, self.kab, self.street, self.home)
+        try:
+            if self.check_fields() is False:
+                QMessageBox.information(self, "Внимание!", "Не все поля заполнены, либо заполнены некорректно!")
+                return
+            update_emp(self.temp_id, self.surname, self.name, self.patronymic, self.birthday,
+                       self.gender, self.post, self.rank, self.division, self.region, self.phone_number, self.SNILS)
+            update_sys_unit(self.model, self.invent_num, self.IP, self.virtual_IP, self.temp_id)
+            update_kab(self.temp_id, self.kab, self.street, self.home)
 
-        ###
-        os = ""
-        for row in range(self.ui.table_os.rowCount()):
-            for column in range(self.ui.table_os.columnCount()):
-                item = self.ui.table_os.item(row, column)
-                if item is not None:
-                    os += item.text() + "; "
-        update_os(self.temp_id, os)
+            ###
+            os = ""
+            for row in range(self.ui.table_os.rowCount()):
+                for column in range(self.ui.table_os.columnCount()):
+                    item = self.ui.table_os.item(row, column)
+                    if item is not None:
+                        os += item.text() + "; "
+            update_os(self.temp_id, os)
 
 
-        table_values = []
-        for row in range(self.ui.table_tech.rowCount()):
-            row_values = []
-            for column in range(self.ui.table_tech.columnCount()):
-                item = self.ui.table_tech.item(row, column)
-                if item is not None:
-                    row_values.append(item.text())
-                else:
-                    row_values.append("")  # Если ячейка пуста, добавляем пустую строку
-            table_values.append(row_values)
-        update_tech(self.temp_id, table_values)
-        SearchWindow.id = None
+            table_values = []
+            for row in range(self.ui.table_tech.rowCount()):
+                row_values = []
+                for column in range(self.ui.table_tech.columnCount()):
+                    item = self.ui.table_tech.item(row, column)
+                    if item is not None:
+                        row_values.append(item.text())
+                    else:
+                        row_values.append("")  # Если ячейка пуста, добавляем пустую строку
+                table_values.append(row_values)
+            update_tech(self.temp_id, table_values)
+            SearchWindow.id = None
+            QMessageBox.information(self, "Данные успешно обновлены!")
+        except:
+            QMessageBox.information(self, "Что-то пошло не так!")
 
     def add_os(self):
         """"Функция для записи OS в БД"""
@@ -189,14 +201,41 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def return_docx(self):
         self.get_user_data()
+        get_tech2(self.transform_tech_data())
         get_request(f"{self.surname} {self.name[0]}.{self.patronymic[0]}")
-        get_tech(self.ui.table_tech.item(0, 0).text(), self.ui.table_tech.item(0, 1).text(), self.ui.table_tech.item(0, 2).text(),
-                 f"{self.street} {str(self.home)}", str(self.kab))
         get_list1([self.surname, self.name, self.patronymic, self.birthday, self.gender, self.post, self.rank, self.division,
                    self.region, self.kab, self.phone_number, "49-49-49", self.SNILS])
         get_exel(["1", self.IP, self.virtual_IP, "инсппектор отдела статистики, Петров П.П."])
         get_exel4([self.os, self.invent_num, f'г.Курган {self.street} {self.home}', self.kab, self.post,
                    f"{self.surname} {self.name} {self.patronymic}", self.phone_number])
+
+    def transform_tech_data(self):
+        data = []
+
+        # Проходим по всем строкам TableWidget
+        for row in range(self.ui.table_tech.rowCount()):
+            row_data = {}
+            # Проходим по всем столбцам в строке
+            for col in range(self.ui.table_tech.columnCount()):
+                # Получаем значение ячейки
+                item = self.ui.table_tech.item(row, col)
+                if item:
+                    # Добавляем значение в словарь с соответствующим ключом
+                    row_data[f'col_{col + 1}'] = item.text()
+            # Добавляем словарь строки в общий список данных
+            row_data[f'col_4'] = self.street + " " + self.home
+            row_data[f'col_5'] = self.kab
+            data.append(row_data)
+
+        # Переименование ключей в словаре
+        for item in data:
+            item['name_sys'] = item.pop('col_1')
+            item['model_sys'] = item.pop('col_2')
+            item['id_sys'] = item.pop('col_3')
+            item['address'] = item.pop('col_4')
+            item['office_num'] = item.pop('col_5')
+        return data
+
 
     def handle_os_item_click(self, item):
         selected_os = item.text()
@@ -280,7 +319,7 @@ class OSWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow1()
-        self.setWindowIcon(QIcon("icon_window.png"))
+        self.setWindowIcon(QIcon("icons/icon_window.png"))
         self.ui.setupUi(self)
 
 
@@ -304,7 +343,7 @@ class SearchWindow(QtWidgets.QMainWindow):
         self.ui.tableWidget.setColumnWidth(3, 150)
         self.ui.tableWidget.setColumnWidth(4, 140)
         self.ui.tableWidget.setColumnWidth(5, 235)
-        self.setWindowIcon(QIcon("icon_window.png"))
+        self.setWindowIcon(QIcon("icons/icon_window.png"))
         self.db_connection = pyodbc.connect(
             r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
             r'DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
@@ -447,7 +486,6 @@ class SearchWindow(QtWidgets.QMainWindow):
                     print("Результат запроса:", os_result)
                     if os_result:
                         os_list = os_result[0].split('; ')
-
                         if os_list:
                             for os_name in os_list[:-1]:
                                 row_position = self.main_window.ui.table_os.rowCount()
@@ -469,7 +507,7 @@ class SelectWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.main_window = MainWindow()
         self.search_window = SearchWindow()
-        self.setWindowIcon(QIcon("icon_window.png"))
+        self.setWindowIcon(QIcon("icons/icon_window.png"))
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.selectMain)
         self.ui.pushButton_2.clicked.connect(self.selectSearch)
