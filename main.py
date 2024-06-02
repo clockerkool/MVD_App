@@ -1,6 +1,8 @@
 import sys
 import pyodbc
 from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtGui import QIcon
 from WordDocx import *
 from ExcelGen import *
 import ui3
@@ -11,10 +13,13 @@ from ui2 import Ui_MainWindow as Ui_MainWindow3
 from ui3 import Ui_MainWindow as Ui_MainWindow
 from final_interface import Ui_MainWindow as Ui_MainWindow2
 from datetime import datetime
+from PIL import Image
+import io
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
+        self.setWindowIcon(QIcon("icon_window.png"))
         self.ui = Ui_MainWindow2()
         self.ui.setupUi(self)
         self.setFixedSize(self.size())
@@ -28,6 +33,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.delete_os.clicked.connect(self.delete_os)
         self.ui.post_new_emp.clicked.connect(self.add_data)
         self.ui.get_docx.clicked.connect(self.return_docx)
+        self.ui.attach_passport.clicked.connect(self.open_file_dialog)
         self.ui.table_os.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.update_button_positions()
 
@@ -61,6 +67,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def add_data(self):
         """Добавление данных в БД"""
+        if self.check_fields() is False:
+            QMessageBox.information(self, "Внимание!", "Не все поля заполнены, либо заполнены некорректно!")
+            return
         self.get_user_data()
         self.temp_id = SearchWindow().id
         print("ID_TO_UPDATE: ", self.temp_id)
@@ -91,6 +100,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 if item is not None:
                     os += item.text() + "; "
         update_os(self.temp_id, os)
+
+
         table_values = []
         for row in range(self.ui.table_tech.rowCount()):
             row_values = []
@@ -195,10 +206,81 @@ class MainWindow(QtWidgets.QMainWindow):
         # Обновляем значение выбранного инвентарного номера при выборе операционной системы
         self.selected_inventory_number = selected_os
 
+    def open_file_dialog(self):
+        file_name, _ = QtWidgets.QFileDialog.getOpenFileName(
+            self, "Открыть изображение", "", "Images (*.png *.jpg *.jpeg *.bmp)")
+        if file_name:
+            self.load_and_save_image(file_name)
+
+    def load_and_save_image(self, file_path):
+        try:
+            with open(file_path, "rb") as image_file:
+                image_data = image_file.read()
+            # Преобразуем данные изображения в формат, подходящий для Access
+            # (двоичные данные в виде массива байтов)
+            image_data = bytearray(image_data)
+        except Exception as e:
+            print(f"Ошибка при загрузке и сохранении изображения: {e}")
+
+
+    def check_fields(self):
+        flag = True
+        try:
+            #print(int(self.ui.office.text()))
+            if int(self.ui.office.text()) and len(self.ui.office.text()) == 0:
+                flag = False
+            elif len(self.ui.street.text()) == 0:
+                flag = False
+            elif int(self.ui.house_num.text()) and len(self.ui.house_num.text()) == 0:
+                flag = False
+            elif len(self.ui.surname.text()) == 0:
+                flag = False
+            elif  len(self.ui.name.text()) == 0:
+                flag = False
+            elif  len(self.ui.patronymic.text()) == 0:
+                flag = False
+            elif  len(self.ui.born_date.text()) == 0:
+                flag = False
+            elif  not self.ui.gender_M.isChecked() and  not self.ui.gender_W.isChecked():
+                flag = False
+            elif len(self.ui.post.text()) == 0:
+                flag = False
+            elif  len(self.ui.rank.text()) == 0:
+                flag = False
+            elif  len(self.ui.division.text()) == 0:
+                flag = False
+            elif len(self.ui.region.text()) == 0:
+                flag = False
+            elif  len(self.ui.phone_number.text()) == 0:
+                flag = False
+            elif len(self.ui.snils.text()) == 0:
+                flag = False
+            elif  len(self.ui.model.text()) == 0:
+                flag = False
+            elif  len(self.ui.invent_num.text()) == 0:
+                flag = False
+            elif  len(self.ui.IP.text()) == 0:
+                flag = False
+            elif  len(self.ui.virtual_IP.text()) == 0:
+                flag = False
+            elif self.ui.table_os.rowCount() == 0:
+                flag = False
+            elif self.ui.table_tech.rowCount() == 0:
+                flag = False
+            return flag
+        except:
+            print("Что-то не так в вводе")
+            return False
+
+
+
+
+
 class OSWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow1()
+        self.setWindowIcon(QIcon("icon_window.png"))
         self.ui.setupUi(self)
 
 
@@ -222,6 +304,7 @@ class SearchWindow(QtWidgets.QMainWindow):
         self.ui.tableWidget.setColumnWidth(3, 150)
         self.ui.tableWidget.setColumnWidth(4, 140)
         self.ui.tableWidget.setColumnWidth(5, 235)
+        self.setWindowIcon(QIcon("icon_window.png"))
         self.db_connection = pyodbc.connect(
             r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
             r'DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
@@ -279,7 +362,7 @@ class SearchWindow(QtWidgets.QMainWindow):
         print("Выбранный инвентарный номер:", self.selected_inventory_number)  # Выводим для отладки
 
     def open_main_window(self):
-
+        self.close()
         if self.selected_inventory_number:
             query = """
                 SELECT Сотрудники.[Кодсотрудника], Сотрудники.Фамилия, Сотрудники.Имя, Сотрудники.Отчество,
@@ -348,6 +431,30 @@ class SearchWindow(QtWidgets.QMainWindow):
                         self.main_window.ui.table_tech.setItem(row_position, col_num,
                                                                QtWidgets.QTableWidgetItem(str(col_data)))
 
+                    # Заполнение table_os
+                    os_query = """
+                                        SELECT Наименование
+                                        FROM ОперационныеСистемы
+                                        WHERE КодСистемногоБлока = (
+                                            SELECT КодСистемногоБлока
+                                            FROM СистемныеБлоки
+                                            WHERE ИнвентарныйНомер = ?
+                                        )
+                                    """
+                    os_cursor = self.db_connection.cursor()
+                    os_cursor.execute(os_query, (self.selected_inventory_number,))
+                    os_result = os_cursor.fetchone()
+                    print("Результат запроса:", os_result)
+                    if os_result:
+                        os_list = os_result[0].split('; ')
+
+                        if os_list:
+                            for os_name in os_list[:-1]:
+                                row_position = self.main_window.ui.table_os.rowCount()
+                                self.main_window.ui.table_os.insertRow(row_position)
+                                self.main_window.ui.table_os.setItem(row_position, 0,
+                                                                     QtWidgets.QTableWidgetItem(os_name))
+
                 self.main_window.show()
             else:
                 print("Данные не найдены")
@@ -362,15 +469,18 @@ class SelectWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.main_window = MainWindow()
         self.search_window = SearchWindow()
+        self.setWindowIcon(QIcon("icon_window.png"))
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.selectMain)
         self.ui.pushButton_2.clicked.connect(self.selectSearch)
 
     def selectMain(self):
         self.main_window.show()
+        self.close()
 
     def selectSearch(self):
         self.search_window.show()
+        self.close()
 
 
 if __name__ == "__main__":

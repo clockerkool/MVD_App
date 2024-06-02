@@ -1,9 +1,11 @@
+import os
+
 import pyodbc
 
 def insert_to_kab(number: int, street: str, home: str):
     try:
         conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
         conn = pyodbc.connect(conn_str)
         cursor = conn.cursor()
@@ -19,7 +21,7 @@ def insert_to_kab(number: int, street: str, home: str):
 def insert_to_sys_unit(model, invent_num, IP, virtual_IP, kab_code, emp_code):
     try:
         conn_str = (
-            r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+            r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
         )
         conn = pyodbc.connect(conn_str)
         cursor = conn.cursor()
@@ -36,7 +38,7 @@ def insert_to_sys_unit(model, invent_num, IP, virtual_IP, kab_code, emp_code):
 def insert_to_employee(surname, name, patronymic, birthday, gender, post, rank, division, region, phone_number, SNILS):
     try:
         conn_str = (
-            r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+            r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
         )
         conn = pyodbc.connect(conn_str)
         cursor = conn.cursor()
@@ -50,9 +52,21 @@ def insert_to_employee(surname, name, patronymic, birthday, gender, post, rank, 
     finally:
         conn.close()
 
+
+def get_db_path():
+    # Получаем путь к папке проекта
+    project_dir = os.path.dirname(os.path.abspath(__file__))
+    # Строим относительный путь к базе данных
+    db_path = os.path.join(project_dir, "MVD.accdb")
+    return db_path
+
 def get_id_kab():
+    # conn_str = (
+    #     r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+    # )
+
     conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
@@ -61,9 +75,10 @@ def get_id_kab():
     print('Последний вставленный идентификатор:', last_id)
     return last_id + 1
 
+
 def get_id_emp():
     conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
@@ -74,7 +89,7 @@ def get_id_emp():
 
 def get_id_sysb():
     conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
@@ -86,7 +101,7 @@ def get_id_sysb():
 
 def insert_to_os(os):
     conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
@@ -97,10 +112,13 @@ def insert_to_os(os):
     conn.close()
 
 
+
+
+
 def inset_to_tech(container: tuple):
     #сделать проверку на пустоту контейнера
     conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
@@ -114,7 +132,7 @@ def inset_to_tech(container: tuple):
 
 def update_emp(id, surname, name, patronymic, birthday, gender, post, rank, division, region, phone_number, SNILS):
     conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
@@ -164,7 +182,7 @@ def update_emp(id, surname, name, patronymic, birthday, gender, post, rank, divi
 
 def update_sys_unit(model, invent_num, IP, virtual_IP,  emp_code):
     conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
@@ -195,7 +213,7 @@ def update_sys_unit(model, invent_num, IP, virtual_IP,  emp_code):
 
 def update_kab(id_emp, number, street, home):
     conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
@@ -236,7 +254,7 @@ def update_kab(id_emp, number, street, home):
 
 def update_os(id_emp, os):
     conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()
@@ -272,7 +290,7 @@ def update_os(id_emp, os):
 
 def update_tech(id_emp, data):
     conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
     )
     conn = pyodbc.connect(conn_str)
     cursor = conn.cursor()

@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtGui import QIcon
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1441,7 +1441,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Форма заполнения"))
         self.label.setText(_translate("MainWindow", "Основная информация"))
         self.label_2.setText(_translate("MainWindow", "Укажите основные данные о системном блоке"))
         self.label_6.setText(_translate("MainWindow", "Модель"))
@@ -1497,4 +1497,5 @@ class Ui_MainWindow(object):
         self.back.setText(_translate("MainWindow", "<"))
         self.forward.setText(_translate("MainWindow", ">"))
         self.pushButton_3.setText(_translate("MainWindow", "АРМ"))
+
 
