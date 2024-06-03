@@ -85,9 +85,8 @@ class MainWindow(QtWidgets.QMainWindow):
             insert_to_sys_unit(self.model, self.invent_num, self.IP, self.virtual_IP, self.kab_code, self.emp_code)
             self.add_os()
             self.add_tech()
-            QMessageBox.information(self, "Запись прошла успешно!")
         except:
-            QMessageBox.information(self, "Что-то пошло не так!")
+            QMessageBox.information(self, "Внимание!", "Что-то пошло не так!")
 
 
 
@@ -123,7 +122,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 table_values.append(row_values)
             update_tech(self.temp_id, table_values)
             SearchWindow.id = None
-            QMessageBox.information(self, "Данные успешно обновлены!")
         except:
             QMessageBox.information(self, "Что-то пошло не так!")
 
@@ -345,8 +343,7 @@ class SearchWindow(QtWidgets.QMainWindow):
         self.ui.tableWidget.setColumnWidth(5, 235)
         self.setWindowIcon(QIcon("icons/icon_window.png"))
         self.db_connection = pyodbc.connect(
-            r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-            r'DBQ=C:\Users\lenovo\PycharmProjects\MVDFinal\MVD.accdb;'
+            r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
         )
         self.selected_inventory_number = None
 
