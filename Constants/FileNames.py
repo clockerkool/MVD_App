@@ -1,4 +1,5 @@
 class FileNames:
     RequestFileName = "Заявление.docx"
     TechPassportFileName = "Технический паспорт.docx"
-    File4 = 'Заявка на подключение АРМ к сети ViPNet УМВД России по Курганской области.xlsx'
+    ExcelARMName = "Перечень APM ИЦ для присоединения к аттестату.xlsx"
+    RequestToConnectARMFileName = 'Заявка на подключение АРМ к сети ViPNet УМВД России по Курганской области.xlsx'

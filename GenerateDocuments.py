@@ -1,7 +1,10 @@
 from abc import ABC, abstractmethod
 from docxtpl import DocxTemplate
 from docx import Document
+import openpyxl
+from openpyxl.styles import Font
 from Constants.FileNames import FileNames
+from Constants.ExcelFields import ExcelFields
 
 class IGenerateFile(ABC):
     @abstractmethod
@@ -24,6 +27,7 @@ class GenerateRequestDocx(IGenerateFile):
             print("Файл успешно сохранен.")
         except Exception as e:
             print("Ошибка при сохранении файла:", e)
+
 
 class GenerateTechDevicesDocx(IGenerateFile):
     def generate_file(self, data: list | str) -> None:
@@ -53,12 +57,64 @@ class GenerateTechDevicesDocx(IGenerateFile):
         doc.save(FileNames.TechPassportFileName)
 
 
+class GenerateExcelARM(IGenerateFile):
+    def generate_file(self, data: list | str) -> None:
+        workbook = openpyxl.load_workbook("list2.xlsx")
+        # Выбор активного листа
+        sheet = workbook.active
+        for index, value in enumerate(ExcelFields.ExcelARMFields):
+            sheet[value].font = Font(name='Times New Roman', size=14)
+            sheet[value] = data[index]
+
+        workbook.save(FileNames.ExcelARMName)
+
+
+class GenerateExcelConnectARM(IGenerateFile):
+    def generate_file(self, data: list | str) -> None:
+        workbook = openpyxl.load_workbook("list4.xlsx")
+        # Выбор активного листа
+        sheet = workbook.active
+        for index, value in enumerate(ExcelFields.ExcelConnectARMFields):
+            sheet[value].font = Font(name='Times New Roman', size=14)
+            sheet[value] = data[index]
+
+        workbook.save(FileNames.RequestToConnectARMFileName)
+
+
+class GenerateExcelList1(IGenerateFile):
+    def generate_file(self, data: list | str) -> None:
+        workbook = openpyxl.load_workbook("list1.xlsx")
+        # Выбор активного листа
+        sheet = workbook.active
+        for index, value in enumerate(ExcelFields.ExcelList1Fields):
+            sheet[value].font = Font(name='Times New Roman', size=14)
+            sheet[value] = data[index]
+
+        workbook.save(f'final_list1.xlsx')
+
+
 class RequestFileCreator(ICreator):
     def create(self) -> IGenerateFile:
         return GenerateRequestDocx()
 
+
 class TechDevicesFileCreator(ICreator):
     def create(self) -> IGenerateFile:
         return GenerateTechDevicesDocx()
+
+
+class ExcelARMCreator(ICreator):
+    def create(self) -> IGenerateFile:
+        return GenerateExcelARM()
+
+class ExcelConnectARMCreator(ICreator):
+    def create(self) -> IGenerateFile:
+        return GenerateExcelConnectARM()
+
+class ExcelList1Creator(ICreator):
+    def create(self) -> IGenerateFile:
+        return GenerateExcelList1()
+
+
 
 
