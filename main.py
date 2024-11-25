@@ -5,15 +5,17 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
 from WordDocx import *
 from ExcelGen import *
+from GenerateDocuments import RequestFileCreator, TechDevicesFileCreator
 import ui3
 from DB_functions import *
 #from ui import Ui_MainWindow as Ui_MainWindow2
 from ui1 import Ui_MainWindow as Ui_MainWindow1
-from ui2 import Ui_MainWindow as Ui_MainWindow3
+from untitled2 import Ui_MainWindow as Ui_MainWindow3
 from ui3 import Ui_MainWindow as Ui_MainWindow
 from final_interface import Ui_MainWindow as Ui_MainWindow2
 from datetime import datetime
 from PIL import Image
+
 import io
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -199,8 +201,8 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def return_docx(self):
         self.get_user_data()
-        get_tech2(self.transform_tech_data())
-        get_request(f"{self.surname} {self.name[0]}.{self.patronymic[0]}")
+        RequestFileCreator().create().generate_file(f"{self.surname} {self.name[0]}.{self.patronymic[0]}")
+        TechDevicesFileCreator().create().generate_file(self.transform_tech_data())
         get_list1([self.surname, self.name, self.patronymic, self.birthday, self.gender, self.post, self.rank, self.division,
                    self.region, self.kab, self.phone_number, "49-49-49", self.SNILS])
         get_exel(["1", self.IP, self.virtual_IP, "инсппектор отдела статистики, Петров П.П."])
@@ -321,7 +323,6 @@ class OSWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
 
 
-
 class SearchWindow(QtWidgets.QMainWindow):
     id = None
     def __new__(cls, *args, **kwargs):
@@ -335,12 +336,15 @@ class SearchWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.search)
         self.ui.pushButton_2.clicked.connect(self.open_main_window)
+        self.setFixedSize(self.size())
         self.ui.tableWidget.setColumnWidth(0, 45)
         self.ui.tableWidget.setColumnWidth(1, 140)
         self.ui.tableWidget.setColumnWidth(2, 140)
         self.ui.tableWidget.setColumnWidth(3, 150)
         self.ui.tableWidget.setColumnWidth(4, 140)
         self.ui.tableWidget.setColumnWidth(5, 235)
+        self.ui.pushButton_3.clicked.connect(self.delete_record)
+        self.selected_row = None
         self.setWindowIcon(QIcon("icons/icon_window.png"))
         self.db_connection = pyodbc.connect(
             r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
@@ -391,11 +395,12 @@ class SearchWindow(QtWidgets.QMainWindow):
 
     # Обработчик событий для таблицы
     def handle_table_item_click(self, item):
-        selected_row = item.row()
-        print("SW:", self.ui.tableWidget.item(selected_row, 0).text())
-        SearchWindow.id = self.ui.tableWidget.item(selected_row, 0).text()
-        self.selected_inventory_number = self.ui.tableWidget.item(selected_row, 5).text()
+        self.selected_row = item.row()
+        print("SW:", self.ui.tableWidget.item(self.selected_row, 0).text())
+        SearchWindow.id = self.ui.tableWidget.item(self.selected_row, 0).text()
+        self.selected_inventory_number = self.ui.tableWidget.item(self.selected_row, 5).text()
         print("Выбранный инвентарный номер:", self.selected_inventory_number)  # Выводим для отладки
+
 
     def open_main_window(self):
         self.close()
@@ -496,6 +501,29 @@ class SearchWindow(QtWidgets.QMainWindow):
 
     def get_id_to_update(self):
         return self.id
+
+    def delete_record(self):
+        if self.selected_row is not None:
+            reply = QMessageBox.question(
+                self, "Подтверждение удаления",
+                "Вы хотите удалить эту запись?",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No
+            )
+
+            if reply == QMessageBox.Yes:
+                try:
+                    delete_emp(self.id)
+
+                    self.ui.tableWidget.removeRow(self.selected_row)
+                    self.selected_row = None
+
+                    QMessageBox.information(self, "Успех", "Запись удалена!")
+
+                except Exception as e:
+                    QMessageBox.critical(self, "Ошибка", f"Ошибка при удалении: {str(e)}")
+        else:
+            QMessageBox.warning(self, "Предупреждение", "Выберите запись для удаления.")
 
 
 class SelectWindow(QtWidgets.QMainWindow):

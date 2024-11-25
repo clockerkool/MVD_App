@@ -3,12 +3,6 @@ from openpyxl.styles import Font
 file_name1 = 'list1.xlsx'
 file_name2 = 'list2.xlsx'
 
-data1 = ['Султанов', 'Даулет', 'Маратович',
-        '02.12.2003', 'М', 'Главный',
-        'Генерал', 'КГУ', 'Курган', '54',
-        '+79292262914', '+79292262914', '354-3423']
-
-data2 = ['1', '192.168.3.62', '255.255.255.255', 'инсппектор отдела статистики, Петров П.П.']
 
 indexs2 = ['A8', 'B8', 'C8', 'D8']
 indexs1 = ['B6', 'C6', 'D6', 'E6', 'F6', 'G6', 'H6',
@@ -27,6 +21,7 @@ def get_exel(data, indexs=indexs2):
                 sheet[value].font = Font(name='Times New Roman', size=14)
                 sheet[value] = data[index]
         workbook.save(f'Перечень APM ИЦ для присоединения к аттестату.xlsx')
+
 
 def get_list1(data, indexs=indexs1):
         workbook = openpyxl.load_workbook("list1.xlsx")

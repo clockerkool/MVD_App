@@ -17,41 +17,6 @@
    <string notr="true">background-color: white;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>660</y>
-      <width>241</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Comfortaa</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: #0A74F0;
-color: white; 
-border-radius: 14px;
-
-}
-
-QPushButton:hover {
-background-color: #0559F0;
-}
-
-QPushButton:pressed {
-background-color: #0559F0;
-}</string>
-    </property>
-    <property name="text">
-     <string>Поиск</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
@@ -656,23 +621,26 @@ QLineEdit {
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>660</y>
-      <width>241</width>
-      <height>51</height>
+      <x>50</x>
+      <y>630</y>
+      <width>931</width>
+      <height>80</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Comfortaa</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="font">
+        <font>
+         <family>Comfortaa</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
 background-color: #0A74F0;
 color: white; 
 border-radius: 14px;
@@ -686,10 +654,71 @@ background-color: #0559F0;
 QPushButton:pressed {
 background-color: #0559F0;
 }</string>
-    </property>
-    <property name="text">
-     <string>Перейти</string>
-    </property>
+       </property>
+       <property name="text">
+        <string>Удалить</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="font">
+        <font>
+         <family>Comfortaa</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+background-color: #0A74F0;
+color: white; 
+border-radius: 14px;
+
+}
+
+QPushButton:hover {
+background-color: #0559F0;
+}
+
+QPushButton:pressed {
+background-color: #0559F0;
+}</string>
+       </property>
+       <property name="text">
+        <string>Поиск</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="font">
+        <font>
+         <family>Comfortaa</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+background-color: #0A74F0;
+color: white; 
+border-radius: 14px;
+
+}
+
+QPushButton:hover {
+background-color: #0559F0;
+}
+
+QPushButton:pressed {
+background-color: #0559F0;
+}</string>
+       </property>
+       <property name="text">
+        <string>Перейти</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>

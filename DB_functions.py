@@ -99,6 +99,7 @@ def get_id_sysb():
     return last_id
 
 
+
 def insert_to_os(os):
     conn_str = (
         r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
@@ -317,6 +318,21 @@ def update_tech(id_emp, data):
     cursor.close()
     conn.close()
 
+def delete_emp(id_emp):
+    conn_str = (
+            r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + get_db_path() + ';'
+    )
+    conn = pyodbc.connect(conn_str)
+    cursor = conn.cursor()
+    sql_select = """
+                DELETE FROM Сотрудники
+                WHERE Кодсотрудника = ?;
+                """
+
+    cursor.execute(sql_select, (id_emp,))
+    conn.commit()
+    cursor.close()
+    conn.close()
 
 
 
