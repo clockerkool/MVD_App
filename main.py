@@ -12,10 +12,8 @@ from ui1 import Ui_MainWindow as Ui_MainWindow1
 from untitled2 import Ui_MainWindow as Ui_MainWindow3
 from ui3 import Ui_MainWindow as Ui_MainWindow
 from final_interface import Ui_MainWindow as Ui_MainWindow2
-from datetime import datetime
-from PIL import Image
+from DBRepository import UnitOfWork
 
-import io
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -73,19 +71,21 @@ class MainWindow(QtWidgets.QMainWindow):
                 QMessageBox.information(self, "Внимание!", "Не все поля заполнены, либо заполнены некорректно!")
                 return
             self.get_user_data()
+            self.emp_code = get_id_emp()
             self.temp_id = SearchWindow().id
             print("ID_TO_UPDATE: ", self.temp_id)
             if self.temp_id != None:
                 self.update_data()
                 return
-            insert_to_kab(self.kab, self.street, self.home)
-            insert_to_employee(self.surname, self.name, self.patronymic, self.birthday,
-                               self.gender, self.post, self.rank, self.division, self.region,
-                               self.phone_number,self.SNILS)
-            self.emp_code = get_id_emp()
-            insert_to_sys_unit(self.model, self.invent_num, self.IP, self.virtual_IP, self.kab_code, self.emp_code)
-            self.add_os()
-            self.add_tech()
+
+            uow = UnitOfWork(get_db_path())
+            uow.cabinets.insert([self.kab, self.street, self.home])
+            uow.employees.insert([self.surname, self.name, self.patronymic, self.birthday,
+                                self.gender, self.post, self.rank, self.division, self.region,
+                                self.phone_number,self.SNILS])
+            uow.sys_unit.insert([self.model, self.invent_num, self.IP, self.virtual_IP, self.kab_code, self.emp_code])
+            uow.os.insert([self.os, get_id_sysb()])
+            uow.tech_devices.insert(self.get_tech())
         except:
             QMessageBox.information(self, "Внимание!", "Что-то пошло не так!")
 
@@ -126,12 +126,9 @@ class MainWindow(QtWidgets.QMainWindow):
         except:
             QMessageBox.information(self, "Что-то пошло не так!")
 
-    def add_os(self):
-        """"Функция для записи OS в БД"""
-        insert_to_os(self.os)
 
 
-    def add_tech(self):
+    def get_tech(self):
         """Функция для записи Технических средств в БД"""
         table_values = []
         for row in range(self.ui.table_tech.rowCount()):
@@ -144,7 +141,8 @@ class MainWindow(QtWidgets.QMainWindow):
                     row_values.append("")  # Если ячейка пуста, добавляем пустую строку
             table_values.append(row_values)
             print(table_values)
-        inset_to_tech(table_values)
+
+        return table_values
 
 
     def previous_page(self):
