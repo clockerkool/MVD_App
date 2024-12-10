@@ -1,6 +1,4 @@
-import pyodbc
-
-from DB_functions import get_id_sysb
+import sqlite3 as sq
 from utils import get_db_path
 
 class DatabaseConnection:
@@ -9,15 +7,11 @@ class DatabaseConnection:
             cls.instance = super().__new__(cls)
         return cls.instance
 
-    def __init__(self, db_path):
-        self.db_path = db_path
+    def __init__(self):
         self.conn = None
 
     def __enter__(self):
-        conn_str = (
-            r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + self.db_path + ';'
-        )
-        self.conn = pyodbc.connect(conn_str)
+        self.conn = sq.connect("Kurse.db")
         return self.conn
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -29,63 +23,24 @@ class BaseRepository:
     def __init__(self, connection):
         self.connection = connection
 
+
 class EmployeeRepository(BaseRepository):
     def insert(self, employee_data: list) -> None:
-        query = """insert into Сотрудники (Фамилия, Имя, Отчество, ДатаРождения, Пол, Должность, Звание, Подразделение, Регион, Телефон, СНИЛС) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+        query = """insert into employee"""
 
         with self.connection as conn:
             cursor = conn.cursor()
             cursor.execute(query, employee_data)
             conn.commit()
 
-    def update(self, id, employee_data):
+    def select(self):
+        query = """select * from employee"""
+
         with self.connection as conn:
             cursor = conn.cursor()
-            sql = """UPDATE Сотрудники SET ... WHERE Кодсотрудника = ?"""
-            cursor.execute(sql, employee_data + (id,))  # Объединение данных
-            conn.commit()
+            cursor.execute(query)
+            row = cursor.fetchall()
+            return row
 
-class CabinetRepository(BaseRepository):
-    def insert(self, data: list) -> None:
-        query = """insert into Кабинеты (Номер, Улица, Дом) values (?, ?, ?)"""
-        with self.connection as conn:
-            cursor = conn.cursor()
-            cursor.execute(query, data)
-            conn.commit()
-
-
-class OSRepository(BaseRepository):
-    def insert(self, data: list) -> None:
-        query = """insert into ОперационныеСистемы (Наименование, КодСистемногоБлока) values (?, ?)"""
-        with self.connection as conn:
-            cursor = conn.cursor()
-            cursor.execute(query, data)
-            conn.commit()
-
-class SysUnitRepository(BaseRepository):
-    def insert(self, data: list) -> None:
-        query = """insert into СистемныеБлоки (Модель, ИнвентарныйНомер, IP, ВиртуальныйIP, Кодкабинета, Кодсотрудника) values (?, ?, ?, ?, ?, ?)"""
-        with self.connection as conn:
-            cursor = conn.cursor()
-            cursor.execute(query, data)
-            conn.commit()
-
-class TechDevicesRepository(BaseRepository):
-    def insert(self, container: list[list]) -> None:
-        sysb_id = get_id_sysb()
-        with self.connection as conn:
-            cursor = conn.cursor()
-            for name, mark, sys_num in container:
-                cursor.execute(
-                    "insert into ТехническиеСредства (Наименование, Марка, СерийныйНомер, КодСистемногоБлока) values (?, ?, ?, ?)",
-                    name, mark, sys_num, sysb_id)
-            conn.commit()
-
-class UnitOfWork:
-    def __init__(self, db_path):
-        self.connection = DatabaseConnection(db_path)
-        self.employees = EmployeeRepository(self.connection)
-        self.cabinets = CabinetRepository(self.connection)
-        self.os = OSRepository(self.connection)
-        self.sys_unit = SysUnitRepository(self.connection)
-        self.tech_devices = TechDevicesRepository(self.connection)
+repos = EmployeeRepository(DatabaseConnection())
+print(repos.select())
