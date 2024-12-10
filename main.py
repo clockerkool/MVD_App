@@ -3,8 +3,6 @@ import pyodbc
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIcon
-from GenerateDocuments import (RequestFileCreator, TechDevicesFileCreator, ExcelConnectARMCreator,
-                               ExcelARMCreator, ExcelList1Creator)
 import ui3
 from DB_functions import *
 #from ui import Ui_MainWindow as Ui_MainWindow2
@@ -13,7 +11,6 @@ from untitled2 import Ui_MainWindow as Ui_MainWindow3
 from ui3 import Ui_MainWindow as Ui_MainWindow
 from final_interface import Ui_MainWindow as Ui_MainWindow2
 from DBRepository import UnitOfWork
-
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -194,17 +191,6 @@ class MainWindow(QtWidgets.QMainWindow):
             row_count = self.ui.table_os.rowCount()
             if row_count > 0:
                 self.ui.table_os.removeRow(row_count - 1)
-
-
-    def return_docx(self):
-        self.get_user_data()
-        RequestFileCreator().create().generate_file(f"{self.surname} {self.name[0]}.{self.patronymic[0]}")
-        TechDevicesFileCreator().create().generate_file(self.transform_tech_data())
-        ExcelARMCreator().create().generate_file(["1", self.IP, self.virtual_IP, "инсппектор отдела статистики, Петров П.П."])
-        ExcelConnectARMCreator().create().generate_file([self.os, self.invent_num, f'г.Курган {self.street} {self.home}', self.kab, self.post,
-                   f"{self.surname} {self.name} {self.patronymic}", self.phone_number])
-        ExcelList1Creator().create().generate_file([self.surname, self.name, self.patronymic, self.birthday, self.gender, self.post, self.rank, self.division,
-                   self.region, self.kab, self.phone_number, "49-49-49", self.SNILS])
 
     def transform_tech_data(self):
         data = []
