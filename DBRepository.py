@@ -1,5 +1,7 @@
 import sqlite3 as sq
-from utils import get_db_path
+from models.EmployeeInfo import EmployeeInfo
+from models.InsertEmployeeData import InsertEmployeeData
+
 
 class DatabaseConnection:
     def __new__(cls, *args, **kwargs):
@@ -12,6 +14,7 @@ class DatabaseConnection:
 
     def __enter__(self):
         self.conn = sq.connect("Kurse.db")
+        self.conn.row_factory = sq.Row
         return self.conn
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -25,22 +28,37 @@ class BaseRepository:
 
 
 class EmployeeRepository(BaseRepository):
-    def insert(self, employee_data: list) -> None:
-        query = """insert into employee"""
+    def insert(self, employee_data: InsertEmployeeData) -> None:
+        query = """INSERT INTO employee (name, surname, patronymic) VALUES (?, ?, ?)"""
 
         with self.connection as conn:
             cursor = conn.cursor()
-            cursor.execute(query, employee_data)
+            cursor.execute(query, (employee_data.name, employee_data.surname, employee_data.patronymic))
             conn.commit()
 
-    def select(self):
+    def select(self) -> list[EmployeeInfo]:
         query = """select * from employee"""
 
         with self.connection as conn:
             cursor = conn.cursor()
             cursor.execute(query)
-            row = cursor.fetchall()
-            return row
+            rows = cursor.fetchall()
 
-repos = EmployeeRepository(DatabaseConnection())
-print(repos.select())
+        return [EmployeeInfo(**row) for row in rows]
+
+    def update(self, employee_data: EmployeeInfo) -> None:
+        query = """UPDATE employee SET name = ?, surname = ?, patronymic = ? WHERE id = ?"""
+
+        with self.connection as conn:
+            cursor = conn.cursor()
+            cursor.execute(query, (employee_data.name, employee_data.surname, employee_data.patronymic, employee_data.id))
+            conn.commit()
+
+    def delete(self, employee_id: int) -> None:
+        query = """DELETE FROM employee WHERE id = ?"""
+
+        with self.connection as conn:
+            cursor = conn.cursor()
+            cursor.execute(query, (employee_id,))
+            conn.commit()
+
