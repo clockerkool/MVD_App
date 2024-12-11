@@ -1,7 +1,14 @@
 import sqlite3 as sq
-from models.EmployeeInfo import EmployeeInfo
-from models.InsertEmployeeData import InsertEmployeeData
 
+from Interfaces.IRepository import IRepository
+from models.EmployeeInfo import EmployeeInfo
+from DataTransferObjectModels.EmployeeDto import InsertEmployeeData
+import logging
+
+logging.basicConfig(filename='../service.log',
+                    level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s'
+                    )
 
 class DatabaseConnection:
     def __new__(cls, *args, **kwargs):
@@ -10,11 +17,10 @@ class DatabaseConnection:
         return cls.instance
 
     def __init__(self):
-        self.conn = None
-
-    def __enter__(self):
         self.conn = sq.connect("Kurse.db")
         self.conn.row_factory = sq.Row
+
+    def __enter__(self):
         return self.conn
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -22,12 +28,10 @@ class DatabaseConnection:
             self.conn.close()
 
 
-class BaseRepository:
+class EmployeeRepository(IRepository):
     def __init__(self):
         self.connection = DatabaseConnection()
 
-
-class EmployeeRepository(BaseRepository):
     def insert(self, employee_data: InsertEmployeeData) -> None:
         query = """INSERT INTO employee (name, surname, patronymic) VALUES (?, ?, ?)"""
 
@@ -61,4 +65,3 @@ class EmployeeRepository(BaseRepository):
             cursor = conn.cursor()
             cursor.execute(query, (employee_id,))
             conn.commit()
-
