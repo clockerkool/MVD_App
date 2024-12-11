@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(210, 230, 781, 371))
+        self.tableWidget.setGeometry(QtCore.QRect(280, 220, 691, 371))
         font = QtGui.QFont()
         font.setFamily("Comfortaa")
         font.setPointSize(11)
@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(5)
+        self.tableWidget.setColumnCount(4)
         self.tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
@@ -85,19 +85,13 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         item.setFont(font)
         self.tableWidget.setHorizontalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        font = QtGui.QFont()
-        font.setFamily("Comfortaa")
-        font.setPointSize(12)
-        item.setFont(font)
-        self.tableWidget.setHorizontalHeaderItem(4, item)
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(False)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(120)
         self.tableWidget.horizontalHeader().setHighlightSections(True)
         self.tableWidget.horizontalHeader().setMinimumSectionSize(60)
         self.tableWidget.horizontalHeader().setSortIndicatorShown(True)
         self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.layoutWidget.setGeometry(QtCore.QRect(30, 120, 970, 100))
+        self.layoutWidget.setGeometry(QtCore.QRect(30, 70, 970, 144))
         self.layoutWidget.setObjectName("layoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 20)
@@ -279,58 +273,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setContentsMargins(-1, -1, -1, 5)
         self.verticalLayout_4.setSpacing(10)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.label_4 = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setFamily("Comfortaa")
-        font.setPointSize(11)
-        self.label_4.setFont(font)
-        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_4.setObjectName("label_4")
-        self.verticalLayout_4.addWidget(self.label_4)
-        self.lineEdit_4 = QtWidgets.QLineEdit(self.layoutWidget)
-        self.lineEdit_4.setMinimumSize(QtCore.QSize(170, 34))
-        font = QtGui.QFont()
-        font.setFamily("Comfortaa")
-        font.setPointSize(14)
-        self.lineEdit_4.setFont(font)
-        self.lineEdit_4.setStyleSheet("QLineEdit {\n"
-"    border: 1px solid #ccc;\n"
-"    border-radius: 8px;\n"
-"    padding: 2px;\n"
-"    background-color: white;\n"
-"}\n"
-"\n"
-"QLineEdit:hover {\n"
-"    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */\n"
-"}\n"
-"\n"
-"QLineEdit:focus {\n"
-"    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */\n"
-"}\n"
-"\n"
-"QLineEdit {\n"
-"    background-color: white;\n"
-"}\n"
-"\n"
-"QLineEdit::hover {\n"
-"    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */\n"
-"}\n"
-"\n"
-"QLineEdit::focus {\n"
-"    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */\n"
-"}\n"
-"\n"
-"QLineEdit {\n"
-"    border: 1px solid #ccc;\n"
-"    border-radius: 5px;\n"
-"    padding: 2px;\n"
-"    background-color: white;\n"
-"    box-shadow: 2px 2px 5px #0A74F0;\n"
-"}\n"
-"")
-        self.lineEdit_4.setAlignment(QtCore.Qt.AlignCenter)
-        self.lineEdit_4.setObjectName("lineEdit_4")
-        self.verticalLayout_4.addWidget(self.lineEdit_4)
         self.horizontalLayout.addLayout(self.verticalLayout_4)
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setContentsMargins(0, -1, -1, 5)
@@ -443,12 +385,9 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Имя"))
         item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Отчество"))
-        item = self.tableWidget.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "СНИЛС"))
         self.label.setText(_translate("MainWindow", "Фамилия"))
         self.label_2.setText(_translate("MainWindow", "Имя"))
         self.label_3.setText(_translate("MainWindow", "Отчество"))
-        self.label_4.setText(_translate("MainWindow", "СНИЛС"))
         self.add_button.setText(_translate("MainWindow", "Добавить"))
         self.delete_button.setText(_translate("MainWindow", "Удалить"))
         self.search_buttoin.setText(_translate("MainWindow", "Поиск"))

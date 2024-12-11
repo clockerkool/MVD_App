@@ -23,8 +23,8 @@ class DatabaseConnection:
 
 
 class BaseRepository:
-    def __init__(self, connection):
-        self.connection = connection
+    def __init__(self):
+        self.connection = DatabaseConnection()
 
 
 class EmployeeRepository(BaseRepository):

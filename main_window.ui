@@ -20,9 +20,9 @@
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>230</y>
-      <width>781</width>
+      <x>280</x>
+      <y>220</y>
+      <width>691</width>
       <height>371</height>
      </rect>
     </property>
@@ -127,25 +127,14 @@ QScrollBar::handle:vertical
       </font>
      </property>
     </column>
-    <column>
-     <property name="text">
-      <string>СНИЛС</string>
-     </property>
-     <property name="font">
-      <font>
-       <family>Comfortaa</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-    </column>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>120</y>
+      <y>70</y>
       <width>970</width>
-      <height>100</height>
+      <height>144</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -418,78 +407,6 @@ QLineEdit {
        <property name="bottomMargin">
         <number>5</number>
        </property>
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="font">
-          <font>
-           <family>Comfortaa</family>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>СНИЛС</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_4">
-         <property name="minimumSize">
-          <size>
-           <width>170</width>
-           <height>34</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Comfortaa</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLineEdit {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 2px;
-    background-color: white;
-}
-
-QLineEdit:hover {
-    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
-}
-
-QLineEdit:focus {
-    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
-}
-
-QLineEdit {
-    background-color: white;
-}
-
-QLineEdit::hover {
-    border: 1px solid #0A74F0; /* Измените цвет рамки при наведении, если нужно */
-}
-
-QLineEdit::focus {
-    border: 1px solid #0A74F0; /* Измените цвет рамки при фокусе, если нужно */
-}
-
-QLineEdit {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 2px;
-    background-color: white;
-    box-shadow: 2px 2px 5px #0A74F0;
-}
-</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
      <item>
