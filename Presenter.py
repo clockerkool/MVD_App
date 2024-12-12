@@ -6,7 +6,7 @@ from models.EmployeeInfo import EmployeeInfo
 
 class Mapper:
     def conver_to_dto(self, data: dict | EmployeeInfo) -> EmployeeDto:
-        return EmployeeDto(**data) if type(dict) else EmployeeDto(**data.model_dump())
+        return EmployeeDto(**data) if type(data) == dict else EmployeeDto(**data.model_dump())
 
     def convert_from_dto(self, data: EmployeeDto) -> EmployeeInfo:
         return EmployeeInfo(**data.model_dump())
@@ -51,4 +51,3 @@ class Presenter:
         except Exception as e:
             logging.error(f"Presenter: Error - {e}")
 
-print(Presenter(Service()).get_all_employees())

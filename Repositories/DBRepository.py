@@ -8,7 +8,7 @@ import logging
 logging.basicConfig(filename='../service.log',
                     level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s'
-                    )
+)
 
 class DatabaseConnection:
     def __new__(cls, *args, **kwargs):
