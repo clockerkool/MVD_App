@@ -2,7 +2,7 @@ import sqlite3 as sq
 
 from Interfaces.IRepository import IRepository
 from models.EmployeeInfo import EmployeeInfo
-from DataTransferObjectModels.EmployeeDto import InsertEmployeeData
+from DtoModels.EmployeeDto import EmployeeDto
 import logging
 
 logging.basicConfig(filename='../service.log',
@@ -32,7 +32,7 @@ class EmployeeRepository(IRepository):
     def __init__(self):
         self.connection = DatabaseConnection()
 
-    def insert(self, employee_data: InsertEmployeeData) -> None:
+    def insert(self, employee_data: EmployeeInfo) -> None:
         query = """INSERT INTO employee (name, surname, patronymic) VALUES (?, ?, ?)"""
 
         with self.connection as conn:

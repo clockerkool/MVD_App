@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class InsertEmployeeData(BaseModel, extra='forbid'):
+class EmployeeDto(BaseModel):
     name: str
     surname: str
     patronymic: str

@@ -10,6 +10,40 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow3()
         self.ui.setupUi(self)
         self.setFixedSize(self.size())
+        self.ui.add_button.clicked.connect(self.add_emp)
+        self.ui.delete_button.clicked.connect(self.delete_emp)
+        self.ui.search_buttoin.clicked.connect(self.search_emp)
+        self.ui.update_button.clicked.connect(self.update_emp)
+
+    def add_emp(self):
+        data = {
+                    "name": self.ui.lineEdit.text(),
+                    "surname": self.ui.lineEdit_2.text(),
+                    "patronymic": self.ui.lineEdit_3.text()
+                }
+        print(data)
+
+    def delete_emp(self):
+        pass
+
+    def update_emp(self):
+        data = {
+            "name": self.ui.lineEdit.text(),
+            "surname": self.ui.lineEdit_2.text(),
+            "patronymic": self.ui.lineEdit_3.text()
+        }
+        print(data)
+
+    def search_emp(self):
+
+        data = {
+            "name": self.ui.lineEdit.text(),
+            "surname": self.ui.lineEdit_2.text(),
+            "patronymic": self.ui.lineEdit_3.text()
+        }
+
+        print(data)
+
 
 
 

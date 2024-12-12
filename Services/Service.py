@@ -1,5 +1,5 @@
 from Repositories.DBRepository import EmployeeRepository
-from DataTransferObjectModels.EmployeeDto import InsertEmployeeData
+from DtoModels.EmployeeDto import EmployeeDto
 from models.EmployeeInfo import EmployeeInfo
 from Interfaces.IService import IService
 import logging
@@ -18,7 +18,7 @@ class Service(IService):
         self.logger.addHandler(file_handler)
 
     def add(self, data: dict) -> None:
-        employee = InsertEmployeeData(**data)
+        employee = EmployeeInfo(**data)
         self.repos_emp.insert(employee)
         logging.info("Service: Added new employee")
 
@@ -35,4 +35,6 @@ class Service(IService):
     def delete(self, id: int) -> None:
         self.repos_emp.delete(id)
         logging.info(f"Service: Deleted employee with id={EmployeeInfo.id}")
+
+print(Service().get())
 
