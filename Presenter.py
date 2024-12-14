@@ -1,6 +1,10 @@
 import logging
+
+from PyQt5.QtWidgets import QMessageBox
+
 from DtoModels.EmployeeDto import EmployeeDto
 from Services.Service import Service
+from Interfaces.IService import IService
 from models.EmployeeInfo import EmployeeInfo
 
 
@@ -13,41 +17,28 @@ class Mapper:
 
 
 class Presenter:
-    def __init__(self, service):
+    def __init__(self, service: IService):
         self.service = service
         self.mapper = Mapper()
 
     def add_employee(self, data: dict) -> None:
-        try:
-            data = self.mapper.conver_to_dto(data)
-            self.service.add_employee(data)
-            logging.info("Presenter: Employee added successfully.")
-        except Exception as e:
-            logging.error(f"Presenter: Error - {e}")
+        data = self.mapper.conver_to_dto(data)
+        self.service.add(data)
 
-    def get_all_employees(self) -> list:
-        # try:
+    def search(self) -> list:
         employees = self.service.get()
         logging.info("Presenter: Returned all employees.")
         result = list(map(self.mapper.conver_to_dto, employees))
         return result
 
-        # except Exception as e:
-        #     logging.error(f"Presenter: Error - {e}")
-        #     return []
-
     def update_employee(self, data: dict) -> None:
-        try:
-            data = self.mapper.conver_to_dto(data)
-            self.service.update_employee(data)
-            logging.info("Presenter: Employee updated successfully.")
-        except Exception as e:
-            logging.error(f"Presenter: Error - {e}")
+        data = self.mapper.conver_to_dto(data)
+        self.service.update(data)
+        logging.info("Presenter: Employee updated successfully.")
 
     def delete_employee(self, id: int) -> None:
-        try:
-            self.service.delete_employee(id)
-            logging.info("Presenter: Employee deleted successfully.")
-        except Exception as e:
-            logging.error(f"Presenter: Error - {e}")
+        self.service.delete(id)
+        logging.info("Presenter: Employee deleted successfully.")
 
+
+presenter = Presenter(Service())

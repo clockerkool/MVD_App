@@ -34,7 +34,7 @@ class EmployeeRepository(IRepository):
 
     def insert(self, employee_data: EmployeeInfo) -> None:
         query = """INSERT INTO employee (name, surname, patronymic) VALUES (?, ?, ?)"""
-
+        print(employee_data)
         with self.connection as conn:
             cursor = conn.cursor()
             cursor.execute(query, (employee_data.name, employee_data.surname, employee_data.patronymic))

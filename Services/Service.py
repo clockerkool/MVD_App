@@ -17,8 +17,9 @@ class Service(IService):
         file_handler.setFormatter(formatter)
         self.logger.addHandler(file_handler)
 
-    def add(self, data: dict) -> None:
-        employee = EmployeeInfo(**data)
+    def add(self, data: EmployeeDto) -> None:
+        employee = EmployeeInfo(**data.model_dump())
+        print(employee)
         self.repos_emp.insert(employee)
         logging.info("Service: Added new employee")
 

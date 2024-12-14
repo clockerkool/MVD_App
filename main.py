@@ -1,6 +1,9 @@
 import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QMessageBox
+
+from Presenter import presenter
 from main_window import Ui_MainWindow as Ui_MainWindow3
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -10,39 +13,44 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow3()
         self.ui.setupUi(self)
         self.setFixedSize(self.size())
+        self.presenter = presenter
         self.ui.add_button.clicked.connect(self.add_emp)
         self.ui.delete_button.clicked.connect(self.delete_emp)
         self.ui.search_buttoin.clicked.connect(self.search_emp)
         self.ui.update_button.clicked.connect(self.update_emp)
 
     def add_emp(self):
-        data = {
-                    "name": self.ui.lineEdit.text(),
-                    "surname": self.ui.lineEdit_2.text(),
-                    "patronymic": self.ui.lineEdit_3.text()
-                }
-        print(data)
+        data = self.get_attributes()
+        self.presenter.add_employee(data=data)
+        QMessageBox.information(self, "Успех", "Запись добавлена!")
+        self.clear()
 
     def delete_emp(self):
-        pass
+        QMessageBox.information(self, "Успех", "Запись удалена!")
 
     def update_emp(self):
-        data = {
-            "name": self.ui.lineEdit.text(),
-            "surname": self.ui.lineEdit_2.text(),
-            "patronymic": self.ui.lineEdit_3.text()
-        }
-        print(data)
+        data = self.get_attributes()
+        QMessageBox.information(self, "Успех", "Запись обновлена!")
+        self.clear()
 
     def search_emp(self):
+        data = self.get_attributes()
+        self.presenter.get_all_employees()
+        self.clear()
 
+
+    def get_attributes(self):
         data = {
-            "name": self.ui.lineEdit.text(),
-            "surname": self.ui.lineEdit_2.text(),
+            "name": self.ui.lineEdit_2.text(),
+            "surname": self.ui.lineEdit.text(),
             "patronymic": self.ui.lineEdit_3.text()
         }
+        return data
 
-        print(data)
+    def clear(self):
+        self.ui.lineEdit_2.setText("")
+        self.ui.lineEdit.setText("")
+        self.ui.lineEdit_3.setText("")
 
 
 
