@@ -25,7 +25,7 @@ class Presenter:
         data = self.mapper.conver_to_dto(data)
         self.service.add(data)
 
-    def search(self) -> list:
+    def get_all_employees(self) -> list:
         employees = self.service.get()
         logging.info("Presenter: Returned all employees.")
         result = list(map(self.mapper.conver_to_dto, employees))

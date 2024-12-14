@@ -11,11 +11,6 @@ logging.basicConfig(filename='../service.log',
 )
 
 class DatabaseConnection:
-    def __new__(cls, *args, **kwargs):
-        if not hasattr(cls, 'instance'):
-            cls.instance = super().__new__(cls)
-        return cls.instance
-
     def __init__(self):
         self.conn = sq.connect("Kurse.db")
         self.conn.row_factory = sq.Row
@@ -29,13 +24,10 @@ class DatabaseConnection:
 
 
 class EmployeeRepository(IRepository):
-    def __init__(self):
-        self.connection = DatabaseConnection()
-
     def insert(self, employee_data: EmployeeInfo) -> None:
         query = """INSERT INTO employee (name, surname, patronymic) VALUES (?, ?, ?)"""
         print(employee_data)
-        with self.connection as conn:
+        with DatabaseConnection() as conn:
             cursor = conn.cursor()
             cursor.execute(query, (employee_data.name, employee_data.surname, employee_data.patronymic))
             conn.commit()
@@ -43,7 +35,7 @@ class EmployeeRepository(IRepository):
     def select(self) -> list[EmployeeInfo]:
         query = """select * from employee"""
 
-        with self.connection as conn:
+        with DatabaseConnection() as conn:
             cursor = conn.cursor()
             cursor.execute(query)
             rows = cursor.fetchall()
@@ -53,15 +45,19 @@ class EmployeeRepository(IRepository):
     def update(self, employee_data: EmployeeInfo) -> None:
         query = """UPDATE employee SET name = ?, surname = ?, patronymic = ? WHERE id = ?"""
 
-        with self.connection as conn:
+        with DatabaseConnection() as conn:
             cursor = conn.cursor()
             cursor.execute(query, (employee_data.name, employee_data.surname, employee_data.patronymic, employee_data.id))
             conn.commit()
 
     def delete(self, employee_id: int) -> None:
-        query = """DELETE FROM employee WHERE id = ?"""
+        try:
+            query = """DELETE FROM employee WHERE id = ?"""
+            with DatabaseConnection() as conn:
+                cursor = conn.cursor()
+                cursor.execute(query, (employee_id,))
+                conn.commit()
 
-        with self.connection as conn:
-            cursor = conn.cursor()
-            cursor.execute(query, (employee_id,))
-            conn.commit()
+        except Exception as e:
+            print(f"Error in delete: {e}")
+
