@@ -41,6 +41,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.clear()
 
     def search_emp(self):
+        self.ui.tableWidget.setRowCount(0)
         result = self.presenter.get_all_employees()
 
         for row_num, row_data in enumerate(result):
@@ -81,7 +82,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.ui.tableWidget.removeRow(self.selected_row)
                 self.selected_row = None
                 return True
-
         else:
             QMessageBox.warning(self, "Предупреждение", "Выберите запись для удаления.")
 
