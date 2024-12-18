@@ -2,7 +2,6 @@ import sqlite3 as sq
 
 from Interfaces.IRepository import IRepository
 from models.EmployeeInfo import EmployeeInfo
-from DtoModels.EmployeeDto import EmployeeDto
 import logging
 
 logging.basicConfig(filename='../service.log',

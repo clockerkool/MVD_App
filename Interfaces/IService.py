@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+
+from DtoModels.EmployeeDto import EmployeeDto
 from models.EmployeeInfo import EmployeeInfo
 
 class IService(ABC):
@@ -7,7 +9,7 @@ class IService(ABC):
         pass
 
     @abstractmethod
-    def get(self) -> list[EmployeeInfo]:
+    def get(self) -> list[EmployeeDto]:
         pass
 
     @abstractmethod
