@@ -35,7 +35,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def update_emp(self):
+        if self.id is None:
+            QMessageBox.warning(self, "Предупреждение", "Выберите запись для изменения.")
+            return
         data = self.get_attributes()
+        data["id"] = self.id
         self.presenter.update_employee(data)
         QMessageBox.information(self, "Успех", "Запись обновлена!")
         self.clear()

@@ -19,8 +19,8 @@ class Service(IService):
         data = self.repos_emp.select()
         return data
 
-    def update(self, data: dict) -> None:
-        employee = EmployeeInfo(**data)
+    def update(self, data: EmployeeDto) -> None:
+        employee = EmployeeInfo(**data.model_dump())
         self.repos_emp.update(employee)
 
     def delete(self, id: int) -> None:
